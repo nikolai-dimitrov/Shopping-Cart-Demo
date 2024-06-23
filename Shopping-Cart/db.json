@@ -1,0 +1,81 @@
+{
+    "phones": [
+        {
+            "id": 1,
+            "modelName": "Iphone 13",
+            "storage": "128",
+            "ram": "2",
+            "OS": "IOS"
+        },
+        {
+            "id": 2,
+            "modelName": "Iphone 14",
+            "storage": "128",
+            "ram": "2",
+            "OS": "IOS"
+        },
+        {
+            "id": 3,
+            "modelName": "Iphone 15",
+            "storage": "128",
+            "ram": "2",
+            "OS": "IOS"
+        },
+        {
+            "id": 4,
+            "modelName": "Iphone 13 Pro",
+            "storage": "256",
+            "ram": "4",
+            "OS": "IOS"
+        },
+        {
+            "id": 5,
+            "modelName": "Iphone 14 Pro",
+            "storage": "256",
+            "ram": "4",
+            "OS": "IOS"
+        },
+        {
+            "id": 6,
+            "modelName": "Iphone 15 Pro",
+            "storage": "256",
+            "ram": "4",
+            "OS": "IOS"
+        },
+        {
+            "id": 7,
+            "modelName": "Iphone 15 Pro Max",
+            "storage": "512",
+            "ram": "6",
+            "OS": "IOS"
+        },
+        {
+            "id": 8,
+            "modelName": "Samsung S22",
+            "storage": "128",
+            "ram": "2",
+            "OS": "Android"
+        },
+        {
+            "id": 9,
+            "modelName": "Samsung S22 Ultra",
+            "storage": "256",
+            "ram": "4",
+            "OS": "Android"
+        },
+        {
+            "id": 10,
+            "modelName": "Samsung S23",
+            "storage": "128",
+            "ram": "2",
+            "OS": "Android"
+        },
+        {
+            "id": 11,
+            "modelName": "Samsung S23 Ultra",
+            "storage": "256",
+            "ram": "4",
+            "OS": "Android"
+        }
+    ]
+}
