@@ -35,10 +35,9 @@ const items = [
 export const Navigation = () => {
     return (
         <>
-            <nav>
+            <nav className={styles.nav__wrapper}>
                 <Menu
                     style={{
-                        width: 256,
                         itemBg: "f0000000",
                         // height: windowHeight - 62,
                     }}

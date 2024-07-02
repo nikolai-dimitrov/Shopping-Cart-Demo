@@ -1,8 +1,11 @@
+.nav__wrapper {
+    width: 20%;
+}
 .nav {
-    height: calc(100vh - 63px);
+    height: calc(100vh - 112px);
 }
 
-@media (max-height: 180px) {
+@media (max-height: 246px) {
     .nav {
         height: 100%;
     }

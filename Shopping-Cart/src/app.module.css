@@ -109,3 +109,11 @@ meter {
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.layout {
+    display: flex;
+}
+
+main {
+    width: 80%;
+}
