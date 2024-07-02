@@ -1,0 +1,9 @@
+.nav {
+    height: calc(100vh - 63px);
+}
+
+@media (max-height: 180px) {
+    .nav {
+        height: 100%;
+    }
+}
