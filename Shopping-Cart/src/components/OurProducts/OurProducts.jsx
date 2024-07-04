@@ -1,6 +1,7 @@
 import { Product } from './Product/Product'
 import styles from "./our-products.module.css"
 
+import { Pagination } from 'antd'
 export const OurProducts = () => {
   return (
     <>
@@ -12,6 +13,20 @@ export const OurProducts = () => {
         <Product />
         <Product />
         <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Pagination
+          simple={{
+            readOnly: true,
+          }}
+          defaultCurrent={1}
+          total={20}
+          style={{
+            width: '93%',
+            justifyContent: 'center'
+          }}
+        />
 
       </div>
     </>
