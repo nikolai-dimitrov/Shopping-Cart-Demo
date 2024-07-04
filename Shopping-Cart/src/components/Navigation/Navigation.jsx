@@ -1,9 +1,6 @@
 import React from 'react';
-import { useState } from 'react'
 
-
-import { Link } from 'react-router-dom'
-
+import { Link, useLocation } from 'react-router-dom'
 
 import {
     HomeOutlined,
@@ -12,7 +9,6 @@ import {
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 
-import { useLocalStorage } from '../../hooks/useLocalStorage'
 import styles from './navigation.module.css'
 const items = [
     {
@@ -43,12 +39,17 @@ const items = [
     },
 
 ];
+
+const pathMapper = {
+    '/': '1',
+    '/products': '2',
+    '/shopping-cart': '3',
+}
+
 export const Navigation = () => {
-    const [persistedPageKey, setStateLocalStorage] = useLocalStorage('currentPage', 1)
-    const persistKeyLocalStorage = (item) => {
-        const { key } = item
-        setStateLocalStorage(key)
-    }
+    const { pathname } = useLocation()
+
+
     return (
         <>
             <nav className={styles.nav__wrapper}>
@@ -56,12 +57,11 @@ export const Navigation = () => {
                     style={{
                         itemBg: "f0000000",
                     }}
-                    defaultSelectedKeys={[`${persistedPageKey}`]}
-                    defaultOpenKeys={['sub1']}
+                    // defaultSelectedKeys={['1']}
+                    selectedKeys={[`${pathMapper[pathname]}`]}
                     theme='light'
                     items={items}
                     className={styles.nav}
-                    onClick={(item, key) => persistKeyLocalStorage(item, key)}
                 />
             </nav>
         </>
