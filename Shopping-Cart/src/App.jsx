@@ -27,7 +27,7 @@ function App() {
                     </Routes>
                 </main>
             </div>
-            <Footer />
+            <Footer className={styles.footer} />
 
 
         </>

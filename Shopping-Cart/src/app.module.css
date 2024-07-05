@@ -120,3 +120,12 @@ main {
     width: 80%;
     padding: 20px;
 }
+
+.footer {
+    background: rgb(28, 230, 255);
+    background: linear-gradient(
+        90deg,
+        rgba(28, 230, 255, 1) 0%,
+        rgba(10, 53, 121, 1) 95%
+    );
+}
