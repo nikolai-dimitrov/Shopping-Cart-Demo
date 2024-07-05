@@ -36,3 +36,15 @@ article:last-child button {
     width: 90%;
     cursor: pointer;
 }
+
+article button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 15px;
+    margin: 0 auto;
+}
+article button span {
+    font-size: 21px;
+}

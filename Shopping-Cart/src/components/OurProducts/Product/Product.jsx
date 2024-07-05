@@ -1,5 +1,6 @@
 import styles from './product.module.css'
 import { Carousel } from 'antd';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 const contentStyle = {
     margin: 0,
     height: '270px',
@@ -47,7 +48,7 @@ export const Product = ({
                         <p>USB Type: <span>{usbType}</span></p>
                         <p>Charger Included: <span>{chargerIncluded}</span></p>
                     </div>
-                    <button>Add to cart</button>
+                    <button>Add to cart <ShoppingCartOutlined /></button>
                 </div>
             </article>
         </Carousel>
