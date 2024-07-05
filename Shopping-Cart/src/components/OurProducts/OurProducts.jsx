@@ -1,18 +1,22 @@
 import { useState, useEffect } from 'react'
 import { Product } from './Product/Product'
+import { CardSkeleton } from '../CardSkeleton/CardSkeleton'
 import styles from "./our-products.module.css"
 import { splitArrayToSubArrays } from "../../utils/splitArrayToSubArrays"
+
 
 import { Pagination } from 'antd'
 export const OurProducts = () => {
   const [electronics, setElectronics] = useState([])
   const [page, setPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     fetch('http://localhost:3030/jsonstore/electronics')
       .then(response => response.json())
       .then(data => {
-        const nestedArrays = splitArrayToSubArrays(Object.values(data))
-        setElectronics(nestedArrays)
+        const nestedArrays = splitArrayToSubArrays(Object.values(data));
+        setElectronics(nestedArrays);
+        setIsLoading(false);
       })
       .catch(error => console.log(error.message));
   }, []);
@@ -24,10 +28,13 @@ export const OurProducts = () => {
   return (
 
     <>
+
       <div className={styles.our__products}>
-        {
+        {isLoading ? <CardSkeleton cards={9} /> : electronics[page - 1]?.map(item => (<Product key={item._id} {...item} />))}
+
+        {/* {
           electronics[page - 1]?.map(item => (<Product key={item._id} {...item} />))
-        }
+        } */}
         <Pagination
           simple={{
             readOnly: true,
