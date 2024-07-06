@@ -1,25 +1,62 @@
 .home {
-    background-color: #f8f8f8;
+    /* background-color: #0393bf; */
+    background: rgb(0, 106, 160);
+    background: linear-gradient(
+        90deg,
+        rgba(0, 106, 160, 1) 0%,
+        rgba(27, 224, 251, 1) 95%
+    );
     height: 100%;
-    /* background-color: #11191e; */
-    /* color: white; */
+    color: white;
+}
+
+.heading {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 40px;
+    font-family: fantasy;
+    font-weight: 900;
 }
 .information__container {
-    padding: 70px 0 70px 50px;
-    margin-bottom: 55px;
+    padding: 25px 0 70px 50px;
+    margin-bottom: 30px;
 }
+
+.information__heading_container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 6px;
+}
+
 h1 {
     font-size: 28px;
     margin-bottom: 5px;
 }
+
 h2 {
     font-size: 23px;
     margin-bottom: 20px;
 }
 h3 {
     font-size: 20px;
-    /* color: gray; */
+    color: #53ffae;
 }
+.home span {
+    color: #53ffae;
+}
+.home .heading .first {
+    color: #69009f;
+}
+.home .heading .second {
+    color: #53ffae;
+}
+.home .heading .third {
+    color: #ff9900;
+}
+.home .heading .fourth {
+    color: #d11394;
+}
+
 .description {
     width: 40%;
     margin: 0 0 20px 18px;
@@ -52,22 +89,20 @@ h3 {
 }
 
 @media (max-height: 1015px) {
-    .home {
-        background-color: red;
-    }
     .information__container {
         margin: unset;
+        padding: 33px 0 30px 50px;
     }
 }
 @media (max-height: 970px) {
     .information__container {
-        padding: 45px 0 45px 50px;
+        padding: 25px 0 25px 50px;
     }
 }
 
-@media (max-height: 920px) {
-    .information__container {
-        padding: 30px 0 30px 40px;
+@media (max-height: 940px) {
+    .img__wrapper {
+        width: 34%;
     }
 }
 @media (max-height: 880px) {
@@ -75,23 +110,6 @@ h3 {
         padding: 30px 0 30px 40px;
     }
     .img__wrapper {
-        width: 35%;
-    }
-}
-@media (max-height: 845px) {
-    .information__container {
-        padding: 30px 0 30px 40px;
-    }
-    .img__wrapper {
-        width: 32%;
-    }
-}
-
-@media (max-height: 813px) {
-    .information__container {
-        padding: 30px 0 30px 40px;
-    }
-    .img__wrapper {
-        width: 30%;
+        width: 33%;
     }
 }

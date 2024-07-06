@@ -11,15 +11,9 @@ header {
     margin: 0 auto;
 }
 .heading {
-    /* text-align: center; */
     font-size: 30px;
     padding: 14px;
-    /* background: rgb(2, 0, 36);
-    background: linear-gradient(
-        90deg,
-        rgba(2, 0, 36, 1) 0%,
-        rgba(9, 52, 121, 1) 0%,
-        rgba(0, 230, 255, 1) 94%
-    ); */
+    font-family: fantasy;
+    line-height: 1;
     color: white;
 }
