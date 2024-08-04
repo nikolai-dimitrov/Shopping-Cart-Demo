@@ -36,6 +36,7 @@ h1 {
 h2 {
     font-size: 23px;
     margin-bottom: 20px;
+    color: #53ffae;
 }
 h3 {
     font-size: 20px;
@@ -56,22 +57,20 @@ h3 {
 .home .heading .fourth {
     color: #d11394;
 }
-
-.description {
+.description__container {
     width: 40%;
+}
+.description {
     margin: 0 0 20px 18px;
-    /* color: gray; */
 }
 .features {
     margin-bottom: 20px;
-    /* color: gray; */
 }
 
 .features li {
     margin-left: 10px;
 }
 .framerMotion__container {
-    /* position: relative; */
     overflow: hidden;
 }
 .img__container {

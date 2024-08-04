@@ -1,14 +1,15 @@
-import styles from './home.module.css'
-import codingImg from '../../assets/coding-reactjs-image.png'
-import shoppingImg from '../../assets/shoping-card-img.webp'
+import { Reveal } from '../Reveal/Reveal';
+import styles from './home.module.css';
+import codingImg from '../../assets/coding-reactjs-image.png';
+import shoppingImg from '../../assets/shoping-card-img.webp';
 
 import { ReactTyped } from "react-typed";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 export const Home = () => {
     return (
         <>
             <div className={styles.home}>
-                <motion.h1 variants={{
+                <motion.h1 style={{ position: 'relative' }} variants={{
                     hidden: { opacity: 0, y: 20 },
                     visible: { opacity: 1, y: 0 },
                 }}
@@ -30,41 +31,48 @@ export const Home = () => {
                             </h1>
                         </ReactTyped>
                     </div>
-                    <ReactTyped strings={['Full Stack Web Developer']} typeSpeed={15} loop={false} showCursor={false} startDelay={1200} >
-                        <h2>
-                        </h2>
-                    </ReactTyped>
-                    <motion.div
-                        variants={{
-                            hidden: { opacity: 0, y: 150 },
-                            visible: { opacity: 1, y: 0 },
-                        }}
-                        initial='hidden'
-                        animate='visible'
-                        transition={{ duration: 0.4, delay: 1.8 }}
-                    // whileHover={{ scale: 1.1, opacity: 1, translateX:100 }}
-                    >
-                        <h3>Project Description</h3>
-                        <p className={styles.description}>This is my Shopping Cart Demo Project.The main reason about doing the project is to practice AntDesign and some libraries responsibe for better UI that i have never used.The main logic is very simple because it isn't the focus of the project. </p>
+                    <Reveal>
+                        <h2>Full Stack Web Developer</h2>
+                    </Reveal>
+                    <div className={styles.description__container}>
+                        <Reveal>
+                            <h3>Project Description</h3>
+                        </Reveal>
+                        <Reveal>
+                            <p className={styles.description}>This is my Shopping Cart Demo Project.The main reason about doing the project is to practice AntDesign and some libraries responsibe for better UI that i have never used.The main logic is very simple because it isn't the focus of the project. </p>
+                        </Reveal>
+                    </div>
+                    <Reveal>
                         <h3>Project Features</h3>
-                        <ul className={styles.features}>
+
+                    </Reveal>
+                    <ul className={styles.features}>
+
+                        <Reveal>
                             <li>- Add items into cart.</li>
+                        </Reveal>
+                        <Reveal>
                             <li>- Remove items from cart.</li>
+                        </Reveal>
+                        <Reveal>
                             <li>- Filling delivery information and than make an order. </li>
-                        </ul>
+                        </Reveal>
+                    </ul>
+
+                    <Reveal>
                         <p>By clicking the button below you are going to visit my GitHub.</p>
                         <a href="#">GitHub</a>
-                    </motion.div>
+                    </Reveal>
                 </div>
                 <div className={styles.framerMotion__container}>
                     <motion.div
                         variants={{
-                            hidden: { opacity: 0, x: 400 },
-                            visible: { opacity: 1, x: 0 },
+                            hidden: { opacity: 0, y: 400 },
+                            visible: { opacity: 1, y: 0 },
                         }}
                         initial='hidden'
                         animate='visible'
-                        transition={{ duration: 0.5, delay: 1.9 }}
+                        transition={{ duration: 0.5, delay: 1.5 }}
                     >
                         <div className={styles.img__container}>
                             <div className={styles.img__wrapper}>
