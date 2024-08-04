@@ -9,6 +9,12 @@
     width: 100%;
     height: 100%;
 }
+.imgHidden {
+    visibility: hidden;
+}
+.imgVisible {
+    visibility: visible !important;
+}
 .title {
     font-size: 17px;
 }
@@ -47,4 +53,8 @@ article button {
 }
 article button span {
     font-size: 21px;
+}
+:global(.react-loading-skeleton) {
+    line-height: 1.5 !important;
+    width: 101% !important;
 }
