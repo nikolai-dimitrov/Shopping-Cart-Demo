@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react'
 
 import { Link, useLocation } from 'react-router-dom'
 
@@ -47,12 +48,21 @@ const pathMapper = {
 }
 
 export const Navigation = () => {
-    const { pathname } = useLocation()
-
+    const [navOpen, setNavOpen] = useState(false);
+    const { pathname } = useLocation();
+    const changeNavStatus = () => {
+        setNavOpen(!navOpen)
+    }
 
     return (
         <>
             <nav className={styles.nav__wrapper}>
+                <div className={styles.menu__toggle} onClick={() => changeNavStatus()}>
+                    <div className={styles.container}>
+                        <span className={navOpen ? `${styles.lineTop} ${styles.spinTop}` : `${styles.lineTop}`}></span>
+                        <span className={navOpen ? `${styles.lineBottom} ${styles.spinBottom}` : `${styles.lineBottom}`}></span>
+                    </div>
+                </div>
                 <Menu
                     style={{
                         itemBg: "f0000000",
@@ -61,7 +71,7 @@ export const Navigation = () => {
                     selectedKeys={[`${pathMapper[pathname]}`]}
                     theme='light'
                     items={items}
-                    className={styles.nav}
+                    className={navOpen ? `${styles.nav} ${styles.nav__open}` : `${ styles.nav }`}
                 />
             </nav>
         </>
