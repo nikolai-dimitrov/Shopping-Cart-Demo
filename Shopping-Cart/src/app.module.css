@@ -114,6 +114,7 @@ body {
     display: flex;
     max-width: 1600px;
     margin: 0 auto;
+    position: relative;
 }
 
 main {
@@ -128,4 +129,16 @@ main {
         rgba(28, 230, 255, 1) 0%,
         rgba(10, 53, 121, 1) 95%
     );
+}
+@media (max-width: 950px) {
+    main {
+        width: 100%;
+        padding: 25px 35px 25px 35px;
+    }
+}
+@media (max-width: 425px) {
+    main {
+        width: 100%;
+        padding: 25px 0px 25px 0px;
+    }
 }
