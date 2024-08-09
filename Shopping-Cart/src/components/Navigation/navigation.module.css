@@ -1,19 +1,33 @@
-.nav__wrapper {
-    width: 20%;
-}
 .nav {
-    /* height: calc(100vh - 112px); */
-    /* height: 100vh; */
+    width: 20%;
+    border-right: 1px solid rgb(232, 226, 226);
+    margin-bottom: 5px;
 }
+.nav__toggle {
+    background-color: white !important;
+    left: 0 !important;
+}
+.menu__toggle {
+    position: sticky;
+    top: 0;
+    left: -100%;
+    z-index: 1000;
+}
+
+:global(.ant-menu) {
+    width: 100%;
+}
+
 .container {
     padding: 8px;
     position: absolute;
-    left: -50px;
+    left: -100%;
     width: 34px;
     height: 25px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
+
 .lineTop,
 .lineBottom {
     height: 2px;
@@ -23,9 +37,9 @@
     border-radius: 10px;
     margin: 0 auto;
     position: absolute;
-    /* transform: rotate(0deg); */
     transition: all 0.4s;
 }
+
 .lineTop {
     top: 19px;
 }
@@ -33,10 +47,10 @@
 .lineBottom {
     bottom: 19px;
 }
+
 .spinTop {
     top: 12px;
     transform: rotate(135deg);
-    /* background-color: #fff; */
 }
 
 .spinBottom {
@@ -48,35 +62,51 @@
     left: 0px !important;
 }
 
-.overlay {
-}
 @media (max-width: 950px) {
-    .nav__wrapper {
+    .nav {
         width: 0%;
+    }
+    .nav__wrapper {
+        position: absolute;
+        height: calc(100% - 25px);
+        left: -100%;
+        background-color: transparent;
+        transition: 0.2s ease-in-out;
+        z-index: 500;
+        width: 28%;
+    }
+    .menu__toggle {
+        left: 0;
     }
 
     :global(.ant-menu) {
-        position: absolute;
-        left: -235px;
+        position: sticky;
+        top: 20px;
+        left: -100%;
         z-index: 100;
         transition: 0.2s ease-in-out;
-        width: 23%;
-        /* border-color: #fff; */
-        border-right: unset !important; 
+        width: 35%;
+        border-right: unset !important;
+        width: 100%;
     }
 
     .container {
         position: relative;
         left: 0;
     }
-
-    .nav {
-        /* height: 100%; */
+}
+@media (max-width: 768px) {
+    .nav__wrapper {
+        width: 40%;
+    }
+    :global(.ant-menu) {
     }
 }
 
-@media (max-height: 246px) {
-    .nav {
-        /* height: 100%; */
+@media (max-width: 450px) {
+    .nav__wrapper {
+        width: 100%;
+    }
+    :global(.ant-menu) {
     }
 }
