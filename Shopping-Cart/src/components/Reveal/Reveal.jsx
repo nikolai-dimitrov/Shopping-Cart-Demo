@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+
 import styles from './reveal.module.css'
 export const Reveal = ({ children }) => {
     return (

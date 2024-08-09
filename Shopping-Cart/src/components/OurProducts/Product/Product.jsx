@@ -1,9 +1,11 @@
-import { useState, useRef, useEffect } from 'react'
-import styles from './product.module.css';
-// import { Reveal } from '../../Reveal/Reveal';
-import { Carousel } from 'antd';
+import { useState } from 'react'
+
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import Skeleton from 'react-loading-skeleton';
+import { Carousel } from 'antd';
+
+import styles from './product.module.css';
+
 const contentStyle = {
     margin: 0,
     height: '270px',

@@ -4,9 +4,11 @@ import { ProductContext } from '../../contexts/ProductContext'
 import { CardSkeleton } from '../CardSkeleton/CardSkeleton'
 
 import { splitArrayToSubArrays } from "../../utils/splitArrayToSubArrays"
-import styles from "./our-products.module.css"
 
 import { Pagination } from 'antd'
+
+import styles from "./our-products.module.css"
+
 export const OurProducts = () => {
   const [electronics, setElectronics] = useState([]);
   const [page, setPage] = useState(1);

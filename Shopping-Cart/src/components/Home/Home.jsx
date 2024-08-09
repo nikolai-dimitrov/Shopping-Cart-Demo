@@ -1,10 +1,11 @@
 import { Reveal } from '../Reveal/Reveal';
-import styles from './home.module.css';
-import codingImg from '../../assets/coding-reactjs-image.png';
-import shoppingImg from '../../assets/shoping-card-img.webp';
 
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
+
+import codingImg from '../../assets/coding-reactjs-image.png';
+import shoppingImg from '../../assets/shoping-card-img.webp';
+import styles from './home.module.css';
 export const Home = () => {
     return (
         <>
