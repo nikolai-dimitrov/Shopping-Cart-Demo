@@ -34,8 +34,8 @@ export const Product = ({
                 <article>
                     <div style={contentStyle}>
                         <div className={styles.img__wrapper}>
-                            {!imageLoaded  && <Skeleton className={styles.img}/>}
-                            <img src={imageUrl} alt="" className={styles.img} onLoad={() => console.log(setImageLoaded(true))} />
+                            {!imageLoaded && <Skeleton className={styles.img} />}
+                            <img src={imageUrl} alt="" className={styles.img} onLoad={() => setImageLoaded(true)} />
                         </div>
                         <p className={styles.title}>{item}</p>
                         <p className={styles.price} >Price:<span>$</span>{price}</p>
