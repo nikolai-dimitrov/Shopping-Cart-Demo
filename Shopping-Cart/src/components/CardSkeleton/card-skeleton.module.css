@@ -1,10 +1,10 @@
 .card {
     width: 30%;
 }
-.card__skeleton {
+.cardSkeleton {
     height: 270px;
 }
-.img__wrapper {
+.imgWrapper {
     width: 100%;
     height: 70%;
     object-fit: contain;
@@ -24,7 +24,7 @@
     font-size: 14px;
     font-weight: 600;
 }
-.btn__wrapper {
+.btnWrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
