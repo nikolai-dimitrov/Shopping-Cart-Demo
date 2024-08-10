@@ -1,50 +1,39 @@
-import { useState, useEffect } from "react";
+import { Routes, Route } from 'react-router-dom'
+
+import { Header } from "./components/Header/Header";
+import { Navigation } from "./components/Navigation/Navigation";
+import { Home } from "./components/Home/Home";
+import { OurProducts } from "./components/OurProducts/OurProducts";
+import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
+import { ProductContextOutlet } from './contexts/ProductContext'
+
+import { Layout } from "antd";
+
 import styles from "./app.module.css"
+const { Footer } = Layout
 
 function App() {
-    const [isHidden, setIsHidden] = useState(false)
     return (
         <>
-            <div>
+            <Header />
+            <div className={styles.layout}>
+                <Navigation />
+                <main id="main">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route element={<ProductContextOutlet />}>
 
-                {isHidden ? <p>Hidden</p> : <Counter />}
-                {/* {isHidden ? <p><Counter /></p> : <div><Counter /></div>} */}
+                            <Route path="/products" element={<OurProducts />} />
+                            <Route path="/shopping-cart" element={<ShoppingCart />} />
+                        </Route >
 
-                <input
-                    type="checkbox"
-                    checked={isHidden}
-                    onChange={
-                        (e) => {
-                            setIsHidden(e.target.checked);
-                        }
-                    }
-                />
-
-                <Counter />
+                    </Routes>
+                </main>
             </div>
+            <Footer className={styles.footer} />
+
+
         </>
-    )
-}
-
-function Counter({
-    isHidden
-}) {
-    const [count, setCount] = useState(0);
-    const [hideEl, setHideEl] = useState(false);
-
-    const increaseCounterHandler = () => {
-        setCount(count => count += 1)
-    };
-
-    return (
-        <>
-            <div className={hideEl ? styles.hideElement : ''}>
-                <p>Count: {count}</p>
-                <button onClick={increaseCounterHandler} className={styles.btn__red}>Increase</button>
-            </div>
-            <button onClick={() => setHideEl(hideEl => !hideEl)}>{hideEl ? 'Show' : 'Hide'}</button>
-        </>
-
     )
 }
 export default App;

@@ -1,0 +1,60 @@
+.img__wrapper {
+    width: 100%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+.img {
+    width: 100%;
+    height: 100%;
+}
+.imgHidden {
+    visibility: hidden;
+}
+.imgVisible {
+    visibility: visible !important;
+}
+.title {
+    font-size: 17px;
+}
+
+.price {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.info__wrapper {
+    text-align: left;
+    padding: 5px 25px 5px 25px;
+    margin-bottom: 5px;
+}
+article:last-child h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+article:last-child span {
+    font-weight: 800;
+}
+article:last-child button {
+    padding: 7px 30px 6px 30px;
+    background: #000000;
+    width: 90%;
+    cursor: pointer;
+}
+
+article button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 15px;
+    margin: 0 auto;
+}
+article button span {
+    font-size: 21px;
+}
+:global(.react-loading-skeleton) {
+    line-height: 1.5 !important;
+    width: 101% !important;
+}
