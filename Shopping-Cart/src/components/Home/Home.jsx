@@ -17,8 +17,8 @@ export const Home = () => {
                     initial='hidden'
                     animate='visible'
                     transition={{ duration: 0.5, delay: 0.1 }} className={styles.heading}><span className={styles.first}>Welcome</span> <span className={styles.second}>to</span> <span className={styles.third}>the</span> <span className={styles.fourth}>E-Store</span></motion.h1>
-                <div className={styles.information__container}>
-                    <div className={styles.information__heading_container}>
+                <div className={styles.informationContainer}>
+                    <div className={styles.informationHeadingContainer}>
                         <motion.h1 variants={{
                             hidden: { opacity: 0, y: 20 },
                             visible: { opacity: 1, y: 0 },
@@ -35,7 +35,7 @@ export const Home = () => {
                     <Reveal>
                         <h2>Full Stack Web Developer</h2>
                     </Reveal>
-                    <div className={styles.description__container}>
+                    <div className={styles.descriptionContainer}>
                         <Reveal>
                             <h3>Project Description</h3>
                         </Reveal>
@@ -65,7 +65,7 @@ export const Home = () => {
                         <a href="#">GitHub</a>
                     </Reveal>
                 </div>
-                <div className={styles.framerMotion__container}>
+                <div className={styles.framerMotionContainer}>
                     <motion.div
                         variants={{
                             hidden: { opacity: 0, y: 400 },
@@ -75,12 +75,12 @@ export const Home = () => {
                         animate='visible'
                         transition={{ duration: 0.5, delay: 1.5 }}
                     >
-                        <div className={styles.img__container}>
-                            <div className={styles.img__wrapper}>
-                                <img src={codingImg} alt="" className={styles.img__left} />
+                        <div className={styles.imgLayout}>
+                            <div className={styles.imgWrapper}>
+                                <img src={codingImg} alt="" className={styles.imgLeft} />
                             </div>
-                            <div className={styles.img__wrapper}>
-                                <img src={shoppingImg} alt="" className={styles.img__right} />
+                            <div className={styles.imgWrapper}>
+                                <img src={shoppingImg} alt="" className={styles.imgRight} />
                             </div>
 
                         </div>
