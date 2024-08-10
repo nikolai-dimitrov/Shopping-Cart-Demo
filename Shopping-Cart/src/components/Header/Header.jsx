@@ -3,7 +3,7 @@ export const Header = () => {
     return (
         <>
             <header>
-                <div className={styles.heading__wrapper}>
+                <div className={styles.headingWrapper}>
                     <h1 className={styles.heading}>E-Store</h1>
                 </div>
             </header>

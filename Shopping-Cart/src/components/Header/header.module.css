@@ -6,7 +6,7 @@ header {
         rgba(0, 230, 255, 1) 94%
     );
 }
-.heading__wrapper {
+.headingWrapper {
     max-width: 1600px;
     margin: 0 auto;
 }
