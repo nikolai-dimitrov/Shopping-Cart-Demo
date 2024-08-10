@@ -35,7 +35,7 @@ export const OurProducts = () => {
 
     <>
 
-      <div className={styles.our__products}>
+      <div className={styles.ourProducts}>
         {isLoading ? <CardSkeleton cards={9} /> : electronics[page - 1]?.map(item => (<Product key={item._id} {...item} />))}
         <Pagination
           simple={{
