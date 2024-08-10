@@ -58,14 +58,14 @@ export const Navigation = () => {
     return (
         <>
             <nav className={styles.nav}>
-                <div className={styles.menu__toggle} onClick={() => changeNavStatus()}>
+                <div className={styles.menuToggle} onClick={() => changeNavStatus()}>
                     <div className={styles.container}>
                         <span className={navOpen ? `${styles.lineTop} ${styles.spinTop}` : `${styles.lineTop}`}></span>
                         <span className={navOpen ? `${styles.lineBottom} ${styles.spinBottom}` : `${styles.lineBottom}`}></span>
                     </div>
                 </div>
 
-                <div className={navOpen ? `${styles.nav__wrapper} ${styles.nav__toggle}` : `${styles.nav__wrapper}`}>
+                <div className={navOpen ? `${styles.navMenuWrapper} ${styles.navToggle}` : `${styles.navMenuWrapper}`}>
                     <Menu
                         style={{
                             itemBg: "f0000000",
@@ -73,7 +73,7 @@ export const Navigation = () => {
                         selectedKeys={[`${pathMapper[pathname]}`]}
                         theme='light'
                         items={items}
-                        className={navOpen ? `${styles.nav} ${styles.nav__open}` : `${styles.nav}`}
+                        className={navOpen ? `${styles.nav} ${styles.navOpen}` : `${styles.nav}`}
                         onClick={() => changeNavStatus()}
                     />
                 </div>
