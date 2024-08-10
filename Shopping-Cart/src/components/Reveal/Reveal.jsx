@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import styles from './reveal.module.css'
 export const Reveal = ({ children }) => {
     return (
-        <div className={styles.container}>
+        <div className={styles.revealContainer}>
             <motion.div
                 variants={{
                     hidden: {
