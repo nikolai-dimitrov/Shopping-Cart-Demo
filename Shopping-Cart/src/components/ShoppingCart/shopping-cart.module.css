@@ -1,0 +1,44 @@
+@keyframes scalingIcon {
+    from {
+        scale: 0;
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+.shoppingCart {
+    height: 100%;
+    /* Center shopping cart empty icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.iconContainer {
+    border-radius: 100%;
+    width: 30%;
+    border: 1px solid white;
+    text-align: center;
+    padding: 15px;
+    background-color: rgb(4 165 206);
+    animation-name: scalingIcon;
+    animation-duration: 1s;
+}
+.innerIconContainer {
+    padding: 80px 0 80px 0;
+    border-radius: 100%;
+    border: 3px solid white;
+}
+.heading {
+    color: gray;
+    font-weight: 900;
+    color: white;
+    font-size: 24px;
+}
+.icon {
+    color: gray;
+    font-size: 100px;
+    color: white;
+}
