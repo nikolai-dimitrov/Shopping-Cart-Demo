@@ -1,11 +1,11 @@
-import { useState, useEffect, useContext } from 'react'
-import { Product } from './Product/Product'
-import { ProductContext } from '../../contexts/ProductContext'
-import { CardSkeleton } from '../CardSkeleton/CardSkeleton'
+import { useState, useEffect, useContext } from 'react';
+import { Product } from './Product/Product';
+import { ProductContext } from '../../contexts/ProductContext';
+import { CardSkeleton } from '../CardSkeleton/CardSkeleton';
 
-import { splitArrayToSubArrays } from "../../utils/splitArrayToSubArrays"
+import { splitArrayToSubArrays } from "../../utils/splitArrayToSubArrays";
 
-import { Pagination } from 'antd'
+import { Pagination, notification } from 'antd';
 
 import styles from "./our-products.module.css"
 
@@ -13,6 +13,8 @@ export const OurProducts = () => {
   const [electronics, setElectronics] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [api, contextHolder] = notification.useNotification();
+
   const { testValue } = useContext(ProductContext)
 
   useEffect(() => {
@@ -27,16 +29,33 @@ export const OurProducts = () => {
       .catch(error => console.log(error.message));
   }, []);
 
+  const openNotification = (pauseOnHover, productTitle) => {
+    api.success({
+      message: "Successful purchase!",
+      description: `You successfully added to cart ${productTitle}`,
+      showProgress: true,
+      pauseOnHover,
+    })
+  }
+  
+  const showNotification = (productTitle) => {
+    openNotification(true, productTitle)
+  }
+
   let totalElectronicsCount = electronics.reduce(
     (count, currentArr) => count + currentArr.length,
     0
   );
+
   return (
 
     <>
 
       <div className={styles.ourProducts}>
-        {isLoading ? <CardSkeleton cards={9} /> : electronics[page - 1]?.map(item => (<Product key={item._id} {...item} />))}
+        <>
+          {contextHolder}
+        </>
+        {isLoading ? <CardSkeleton cards={9} /> : electronics[page - 1]?.map(item => (<Product key={item._id} {...item} showNotification={showNotification} />))}
         <Pagination
           simple={{
             readOnly: true,

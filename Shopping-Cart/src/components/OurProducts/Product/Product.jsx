@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { ProductContext } from '../../../contexts/ProductContext'
 
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import Skeleton from 'react-loading-skeleton';
@@ -26,8 +27,15 @@ export const Product = ({
     usbType,
     price,
     chargerIncluded,
+    showNotification,
 }) => {
-    const [imageLoaded, setImageLoaded] = useState(false)
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const { addToCartHandler } = useContext(ProductContext);
+    const addToCart = (product) => {
+        addToCartHandler(product);
+        showNotification(product.item);
+
+    }
     return (
         <>
             <Carousel arrows infinite={false} style={{
@@ -57,7 +65,22 @@ export const Product = ({
                             <p>USB Type: <span>{usbType}</span></p>
                             <p>Charger Included: <span>{chargerIncluded}</span></p>
                         </div>
-                        <button>Add to cart <ShoppingCartOutlined /></button>
+                        <button onClick={() => addToCart({
+                            _id,
+                            item,
+                            display,
+                            processor,
+                            ram,
+                            imageUrl,
+                            capacity,
+                            battery,
+                            usbType,
+                            price,
+                            chargerIncluded,
+                        })}>
+                            Add to cart
+                            <ShoppingCartOutlined />
+                        </button>
                     </div>
                 </article>
             </Carousel>
