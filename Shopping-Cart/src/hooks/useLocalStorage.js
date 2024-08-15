@@ -9,17 +9,9 @@ export const useLocalStorage = (key, initialState) => {
 		}
 	});
 
-	const setStateLocalStorage = (currentProduct, operationString) => { 
-		if (operationString == "add") {
-			setPersistedState((persistedState) => [
-				...persistedState,
-				currentProduct,
-			]);
-		} else if (operationString == "remove") {
-			setPersistedState((persistedState) =>
-				persistedState.filter((item) => item._id != currentProduct._id)
-			);
-		}
+	const setStateLocalStorage = (value) => {
+		setPersistedState(value);
+		localStorage.setItem(key, JSON.stringify(value));
 	};
 
 	return [persistedState, setStateLocalStorage];

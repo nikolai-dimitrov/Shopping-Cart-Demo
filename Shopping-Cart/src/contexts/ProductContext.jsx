@@ -10,12 +10,15 @@ export const ProductProvider = ({ children }) => {
 
 
     const addToCartHandler = (currentProduct) => {
-        setCartProducts(currentProduct, 'add');
+        const calculatedState = [...cartProducts, currentProduct]
+        setCartProducts(calculatedState);
+
 
     }
 
     const removeFromCartHandler = (currentProduct) => {
-        setCartProducts(currentProduct, 'remove');
+        const calculatedState = cartProducts.filter(p => p._id != currentProduct._id);
+        setCartProducts(calculatedState);
     }
 
 
@@ -27,12 +30,6 @@ export const ProductProvider = ({ children }) => {
         testValue,
     }
 
-    // console.log(cartProducts, 'in context')
-    let stringifiedState = JSON.stringify([
-        ...cartProducts,
-    ]);
-
-    localStorage.setItem('cartProducts', stringifiedState);
     return (
         <ProductContext.Provider value={productContextValues}>
             {children}
