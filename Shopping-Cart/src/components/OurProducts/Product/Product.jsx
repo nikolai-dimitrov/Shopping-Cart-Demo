@@ -32,8 +32,14 @@ export const Product = ({
     const [imageLoaded, setImageLoaded] = useState(false);
     const { addToCartHandler } = useContext(ProductContext);
     const addToCart = (product) => {
-        addToCartHandler(product);
-        showNotification(product.item);
+        try {
+            addToCartHandler(product);
+            showNotification(product.item, 'success');
+        } catch (error) {
+            console.log(error.message)
+            showNotification(product.item, 'error');
+        }
+
 
     }
     return (
