@@ -29,17 +29,18 @@ export const OurProducts = () => {
 			.catch(error => console.log(error.message));
 	}, []);
 
-	const openNotification = (pauseOnHover, productTitle) => {
-		api.success({
-			message: "Successful purchase!",
-			description: `You successfully added to cart ${productTitle}`,
+	const openNotification = (pauseOnHover, productTitle, status) => {
+		api[`${status}`]({
+			message: status == 'success' ? "Successful purchase!" : "Unsuccessful purchase",
+			description: status == 'success' ? `You successfully added to cart ${productTitle}` : `You have already added ${productTitle}!`,
 			showProgress: true,
 			pauseOnHover,
 		})
+
 	}
 
-	const showNotification = (productTitle) => {
-		openNotification(true, productTitle)
+	const showNotification = (productTitle, status) => {
+		openNotification(true, productTitle, status)
 	}
 
 	let totalElectronicsCount = electronics.reduce(
