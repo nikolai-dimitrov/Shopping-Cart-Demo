@@ -10,8 +10,13 @@ export const ProductProvider = ({ children }) => {
 
 
     const addToCartHandler = (currentProduct) => {
-        const calculatedState = [...cartProducts, currentProduct]
-        setCartProducts(calculatedState);
+        const existingProduct = cartProducts.filter(i => i._id == currentProduct._id);
+        if (existingProduct.length > 0) {
+            throw new Error('This product has already been added!')
+        } else {
+            const calculatedState = [...cartProducts, currentProduct];
+            setCartProducts(calculatedState);
+        }
 
 
     }
