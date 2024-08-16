@@ -1,5 +1,4 @@
-import { createContext, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { createContext } from 'react';
 
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
@@ -41,11 +40,3 @@ export const ProductProvider = ({ children }) => {
         </ProductContext.Provider>
     )
 }
-
-export const ProductContextOutlet = () => {
-    return (
-        <ProductProvider>
-            <Outlet />
-        </ProductProvider>
-    )
-};
