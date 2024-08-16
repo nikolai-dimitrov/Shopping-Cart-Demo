@@ -70,7 +70,7 @@ export const Product = ({
                             <p>USB Type: <span>{usbType}</span></p>
                             <p>Charger Included: <span>{chargerIncluded}</span></p>
                         </div>
-                        <button onClick={() => addToCart({
+                        <button className={styles.btn} onClick={() => addToCart({
                             _id,
                             item,
                             display,
