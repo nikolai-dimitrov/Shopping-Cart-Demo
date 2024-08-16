@@ -28,6 +28,7 @@ export const OurProducts = () => {
 			})
 			.catch(error => console.log(error.message));
 	}, []);
+
 	const showNotification = (productTitle, status) => {
 		api[`${status}`]({
 			message: status == 'success' ? "Successful purchase!" : "Unsuccessful purchase",

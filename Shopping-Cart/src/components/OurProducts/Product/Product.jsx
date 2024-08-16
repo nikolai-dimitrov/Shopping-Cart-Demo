@@ -36,7 +36,6 @@ export const Product = ({
             addToCartHandler(product);
             showNotification(product.item, 'success');
         } catch (error) {
-            console.log(error.message)
             showNotification(product.item, 'error');
         }
 
