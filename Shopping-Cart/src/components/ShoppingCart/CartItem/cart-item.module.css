@@ -1,4 +1,62 @@
-.testBtn {
-    color: red !important;
-    cursor: pointer;
+.card {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 25px;
+}
+.item {
+	display: flex;
+	flex-direction: row;
+	width: 45.5%;
+}
+.imgContainer {
+	height: 100px;
+	width: 100px;
+	margin-right: 10px;
+}
+
+.img {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+.description h4:nth-child(n + 1),
+.description p:nth-child(4) {
+	color: orange;
+}
+
+.quantityContainer {
+	display: flex;
+	align-items: center;
+	border: 1px solid black;
+	height: 100%;
+	border-radius: 10px;
+}
+
+.leftSide,
+.rightSide {
+	padding: 4px 15px 4px 15px;
+	cursor: pointer;
+}
+
+.quantityContainer p {
+	padding: 4px 15px 4px 15px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.totalPriceContainer {
+}
+
+.totalPrice {
+	font-weight: 800;
+	margin-right: 10px;
+}
+
+.btn {
+	background-color: rgb(196, 195, 195);
+	padding: 4px;
+	border-radius: 4px;
+	cursor: pointer;
 }
