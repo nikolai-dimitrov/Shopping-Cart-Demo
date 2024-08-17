@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import styles from './cart-item.module.css';
-export const CartItem = ({ product, removeFromCartHandler }) => {
-    const [productQuantity, setProductQuantity] = useState(1)
+export const CartItem = ({ product, removeFromCartHandler, productQuantity, productQuantityHandler }) => {
     const incrementQuantity = () => {
-        setProductQuantity(productQuantity + 1)
-    }
-    const decrementQuantity = () => {
-        setProductQuantity(productQuantity - 1)
+        productQuantityHandler(product._id, 'increment')
 
     }
-    const totalPrice = productQuantity * product.price
+
+    const decrementQuantity = () => {
+        productQuantityHandler(product._id, 'decrement')
+    }
+
+
     return (
         <>
             <article className={styles.card}>
@@ -36,7 +37,7 @@ export const CartItem = ({ product, removeFromCartHandler }) => {
                     </button>
                 </div>
                 <div className={styles.totalPriceContainer}>
-                    <span className={styles.totalPrice}>${totalPrice}</span>
+                    <span className={styles.totalPrice}>${product.price * productQuantity}</span>
 
                     <button className={styles.btn} onClick={() => removeFromCartHandler(product)}>
                         X
