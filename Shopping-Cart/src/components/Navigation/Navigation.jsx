@@ -55,7 +55,7 @@ export const Navigation = () => {
 
         {
             key: '3',
-            icon: [<ShoppingCartOutlined />],
+            icon: <ShoppingCartOutlined />,
             label: (
                 <Link to="/shopping-cart">Shopping Cart</Link>
             )
