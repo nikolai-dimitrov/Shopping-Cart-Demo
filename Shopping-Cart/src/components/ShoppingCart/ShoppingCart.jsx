@@ -7,7 +7,7 @@ import {
 
     ShoppingCartOutlined
 } from '@ant-design/icons'
-
+import { Flex, Progress } from 'antd';
 import styles from './shopping-cart.module.css'
 export const ShoppingCart = () => {
     const { cartProducts, removeFromCartHandler } = useContext(ProductContext);
@@ -30,9 +30,10 @@ export const ShoppingCart = () => {
         })
     }
 
-    let grandTotalPrice = 0
-    cartProducts.forEach((el) => grandTotalPrice += el.price * quantity[el._id])
-
+    let subTotalPrice = 0;
+    cartProducts.forEach((el) => subTotalPrice += el.price * quantity[el._id]);
+    let salesTax = subTotalPrice * 0.1;
+    let grandTotalPrice = subTotalPrice + salesTax;
     return (
         <section className={cartProducts.length > 0 ? `${styles.shoppingCart}` : `${styles.shoppingCart} ${styles.emptyCardLayout}`}>
             {cartProducts.length == 0 ? <div className={styles.iconContainer}>
@@ -54,7 +55,29 @@ export const ShoppingCart = () => {
                     <div className={styles.productCards}>
                         {cartProducts.map(product => (<CartItem key={product._id} product={product} productQuantity={quantity[product._id]} productQuantityHandler={productQuantityHandler} removeFromCartHandler={removeFromCartHandler} />))}
                     </div>
-                    <div>Grand Total Price:$ {grandTotalPrice}</div>
+                    <div className={styles.checkOutContainer}>
+                        <div className={styles.description}>
+                            <p>Subtotal: <span>${subTotalPrice}</span> </p>
+                            <p>Sales Tax: <span>${salesTax}</span> </p>
+                            <p>Grand Total: <span>${grandTotalPrice}</span> </p>
+                        </div>
+                        {/* <Flex
+                            vertical
+                            gap="small"
+                            style={{
+                                width: 248,
+                            }}
+                        >
+                            <Progress percent={30} size="small" />
+                            <Progress percent={50} size="small" status="active" />
+                            <Progress percent={70} size="small" status="exception" />
+                            <Progress percent={100} size="small" />
+                        </Flex> */}
+
+                        <button className={styles.checkOutBtn}>Check out</button>
+
+                    </div>
+
                 </>
             }
         </section>
