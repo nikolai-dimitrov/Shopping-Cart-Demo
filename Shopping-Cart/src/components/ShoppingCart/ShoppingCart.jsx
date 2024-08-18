@@ -5,7 +5,8 @@ import { CartItem } from './CartItem/CartItem'
 import { Reveal } from '../Reveal/Reveal'
 import {
 
-    ShoppingCartOutlined
+    ShoppingCartOutlined,
+    CarOutlined
 } from '@ant-design/icons'
 import { Flex, Progress } from 'antd';
 import styles from './shopping-cart.module.css'
@@ -32,8 +33,12 @@ export const ShoppingCart = () => {
 
     let subTotalPrice = 0;
     cartProducts.forEach((el) => subTotalPrice += el.price * quantity[el._id]);
-    let salesTax = subTotalPrice * 0.1;
-    let grandTotalPrice = subTotalPrice + salesTax;
+    const salesTax = subTotalPrice * 0.1;
+    const shippingTax = 50
+    let grandTotalPrice = subTotalPrice + salesTax + shippingTax;
+
+    const freeShippingPercent = ((grandTotalPrice - shippingTax) / 5000) * 100;
+    freeShippingPercent >= 100 ? grandTotalPrice -= shippingTax : grandTotalPrice;
     return (
         <section className={cartProducts.length > 0 ? `${styles.shoppingCart}` : `${styles.shoppingCart} ${styles.emptyCardLayout}`}>
             {cartProducts.length == 0 ? <div className={styles.iconContainer}>
@@ -58,28 +63,32 @@ export const ShoppingCart = () => {
                     <div className={styles.checkOutContainer}>
                         <div className={styles.description}>
                             <p>Subtotal: <span>${subTotalPrice}</span> </p>
-                            <p>Sales Tax: <span>${salesTax}</span> </p>
-                            <p>Grand Total: <span>${grandTotalPrice}</span> </p>
+                            <div className={styles.shippingTaxContainer}>
+                                <p className={styles.shippingTax}>Shipping Tax: <span>$50</span> </p>
+                                <div className={freeShippingPercent >= 100 ? `${styles.crossLine} ${styles.showLine}` : `${styles.crossLine}`}></div>
+                            </div>
+                            <p className={styles.salesTax}>Sales Tax: <span>${salesTax}</span> </p>
+                            <p className={styles.grandTotalPrice}>Grand Total: <span>${grandTotalPrice}</span> </p>
                         </div>
-                        {/* <Flex
+                        <div className={styles.message}>
+                            {grandTotalPrice >= 5000 ? <p>Congrats, you are eligible for <span>Free Shipping</span></p> : <p>Sorry, you aren't eligible for <span>Free Shipping</span></p>}
+                            <CarOutlined className={styles.carIcon} />
+                        </div>
+                        <span></span>
+                        <Flex
                             vertical
                             gap="small"
-                            style={{
-                                width: 248,
-                            }}
+                            className={styles.progressContainer}
+
                         >
-                            <Progress percent={30} size="small" />
-                            <Progress percent={50} size="small" status="active" />
-                            <Progress percent={70} size="small" status="exception" />
-                            <Progress percent={100} size="small" />
-                        </Flex> */}
+                            <Progress percent={freeShippingPercent} size="active" showInfo={false} />
+                        </Flex>
 
                         <button className={styles.checkOutBtn}>Check out</button>
-
                     </div>
 
                 </>
             }
-        </section>
+        </section >
     )
 }

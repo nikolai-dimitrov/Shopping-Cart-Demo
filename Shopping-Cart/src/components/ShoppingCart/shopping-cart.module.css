@@ -40,6 +40,7 @@
 	font-weight: 900;
 	color: white;
 	font-size: 24px;
+	margin-bottom: 25px;
 }
 .icon {
 	color: gray;
@@ -91,20 +92,56 @@
 	justify-content: space-between;
 	margin-bottom: 20px;
 }
-.description p:nth-child(2) {
+.shippingTaxContainer {
+	position: relative;
+	overflow: hidden;
+}
+
+.description .shippingTax {
+	font-weight: 600;
+}
+.crossLine {
+	height: 2px;
+	width: 100%;
+	background-color: black;
+	position: absolute;
+	top: 8px;
+	right: 700px;
+	transition: 0.3s ease-in-out;
+}
+.showLine {
+	right: 0;
+	transition: 0.3s ease-in-out;
+}
+.description .salesTax {
 	font-weight: 600;
 	border-bottom: 1px solid rgb(231, 229, 229);
 	padding-bottom: 20px;
 }
-.description p:nth-child(3) {
+.description .grandTotalPrice {
 	font-weight: 600;
 }
-.description p:nth-child(3) span {
+.description .grandTotalPrice span {
 	font-size: 30px;
 	font-weight: 400;
 }
+
+.message {
+	width: 23%;
+	display: flex;
+	align-items: flex-start;
+}
+.message span {
+	font-weight: 600;
+}
+.carIcon {
+	font-size: 24px;
+}
+.progressContainer {
+	width: 23%;
+}
 .checkOutBtn {
-	width: 20%;
+	width: 23%;
 	text-align: center;
 	background-color: black;
 	color: white;
