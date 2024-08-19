@@ -106,7 +106,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-		margin-right: 11px;
 	}
 	.totalPrice {
 		margin-right: unset;
