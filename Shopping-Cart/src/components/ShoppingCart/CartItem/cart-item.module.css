@@ -24,6 +24,7 @@
 .description h4:nth-child(n + 1),
 .description p:nth-child(4) {
 	color: orange;
+	font-size: 15px;
 }
 
 .quantityContainer {
@@ -32,6 +33,9 @@
 	border: 1px solid black;
 	height: 100%;
 	border-radius: 10px;
+}
+.heading {
+	font-size: 20px;
 }
 
 .leftSide,
@@ -46,9 +50,6 @@
 	border-right: 1px solid black;
 }
 
-.totalPriceContainer {
-}
-
 .totalPrice {
 	font-weight: 800;
 	margin-right: 10px;
@@ -59,4 +60,58 @@
 	padding: 4px;
 	border-radius: 4px;
 	cursor: pointer;
+}
+@media (max-width: 1280px) {
+	.item {
+		width: 46%;
+	}
+}
+
+@media (max-width: 1024px) {
+	.item {
+		width: 47%;
+	}
+}
+
+@media (max-width: 450px) {
+	.card {
+	}
+	.item {
+		width: 38%;
+		flex-direction: column;
+	}
+	.imgContainer {
+		width: 100%;
+	}
+	.quantityContainer {
+		display: flex;
+		align-items: center;
+		border: 1px solid black;
+		height: 100%;
+		border-radius: 10px;
+		flex-direction: column-reverse;
+	}
+	.leftSide,
+	.rightSide {
+		padding: 4px 10px 4px 10px;
+	}
+	.quantityContainer p {
+		padding: 4px 10px 4px 10px;
+		border-top: 1px solid black;
+		border-bottom: 1px solid black;
+		border-left: unset;
+		border-right: unset;
+	}
+	.card div:nth-child(4) {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		margin-right: 11px;
+	}
+	.totalPrice {
+		margin-right: unset;
+	}
+	.btn {
+		text-align: center;
+	}
 }
