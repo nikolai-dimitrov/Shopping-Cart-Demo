@@ -148,3 +148,46 @@
 	padding: 10px 17px 10px 20px;
 	cursor: pointer;
 }
+
+@media (max-width: 768px) {
+	.checkOutContainer .description {
+		width: 46%;
+	}
+	.message,
+	.progressContainer,
+	.checkOutBtn {
+		width: 31%;
+	}
+}
+@media (max-width: 576px) {
+	.checkOutContainer .description {
+		width: 56%;
+	}
+	.message,
+	.progressContainer,
+	.checkOutBtn {
+		width: 41%;
+	}
+}
+@media (max-width: 450px) {
+	.container {
+		padding: 0 10px 0 10px;
+	}
+	.checkOutContainer .description {
+		width: 100%;
+	}
+	.message,
+	.progressContainer,
+	.checkOutBtn {
+		width: 100%;
+	}
+}
+@media (max-width: 425px) {
+	.productCards {
+		padding: 0 10px 0 10px;
+	}
+	.checkOutContainer {
+		padding: 0 10px 0 10px;
+
+	}
+}
