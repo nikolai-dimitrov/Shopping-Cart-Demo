@@ -5,8 +5,13 @@
 	top: 0px;
 	width: 80%;
 	transition: 0.7s ease-in-out;
+	margin: 0 auto;
 }
-
+.delivery h1 {
+	max-width: 600px;
+	margin: 0 auto;
+	margin-bottom: 24px;
+}
 .showDeliveryModal {
 	left: 0px;
 	position: relative;
@@ -17,4 +22,3 @@
 input {
 	background-color: white;
 }
-
