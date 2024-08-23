@@ -8,12 +8,32 @@
 		opacity: 1;
 	}
 }
-
-.shoppingCart {
-	/* Center shopping cart empty icon */
-	height: 100%;
+@keyframes hideProductSection {
+	from {
+		right: 0px;
+	}
+	to {
+		right: 100%;
+	}
 }
 
+.shoppingCart {
+	height: 100%;
+	position: relative;
+}
+
+.hideProductSection {
+	position: absolute;
+	animation: hideProductSection;
+	animation-duration: 0.7s;
+	width: 98%;
+	right: 100%;
+}
+.showProductSection {
+	right: 0px;
+	transition: 0.7s ease-in-out;
+	transition-delay: 0.3s;
+}
 /* Empty cart layout css */
 .emptyCardLayout {
 	display: flex;
@@ -188,6 +208,5 @@
 	}
 	.checkOutContainer {
 		padding: 0 10px 0 10px;
-
 	}
 }
