@@ -1,0 +1,19 @@
+.delivery {
+	height: 100%;
+	position: absolute;
+	left: 100%;
+	top: 0px;
+	width: 80%;
+    transition: 0.7s ease-in-out;
+    padding: 20px;
+}
+
+.showDeliveryModal {
+	left: 0px;
+	transition: 0.7s ease-in-out;
+	transition-delay: 0.3s;
+}
+
+input {
+	background-color: white;
+}
