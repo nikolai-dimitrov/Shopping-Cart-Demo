@@ -36,6 +36,7 @@ export const ShoppingCart = () => {
             })
         })
     };
+    
     const closeModalHandler = () => {
         setDeliveryModalStatus(false)
     };
