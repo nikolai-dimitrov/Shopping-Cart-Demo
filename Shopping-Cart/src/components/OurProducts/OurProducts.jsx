@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { usePopup } from '../../hooks/usePopup';
+
 import { Product } from './Product/Product';
 import { CardSkeleton } from '../CardSkeleton/CardSkeleton';
 import { Popup } from '../Popup/Popup';
@@ -11,13 +13,7 @@ export const OurProducts = () => {
 	const [electronics, setElectronics] = useState([]);
 	const [page, setPage] = useState(1);
 	const [isLoading, setIsLoading] = useState(true);
-	const [showPopup, setShowPopup] = useState({
-		'status': undefined,
-		'open': false,
-		'timesOpened': 0,
-		'message': '',
-		'description': ''
-	})
+	const [popupState, setPopupState] = usePopup()
 
 	useEffect(() => {
 		fetch('http://localhost:3030/jsonstore/electronics')
@@ -32,8 +28,7 @@ export const OurProducts = () => {
 	}, []);
 
 	const showPopupHandler = (status, open, message, description) => {
-		console.log(status, open, message, description)
-		setShowPopup(showPopup => ({ ...showPopup, status, open, timesOpened: showPopup['timesOpened'] += 1, message, description }));
+		setPopupState(popupState => ({ ...popupState, status, open, timesOpened: popupState['timesOpened'] += 1, message, description }));
 
 	}
 
@@ -46,7 +41,7 @@ export const OurProducts = () => {
 		<>
 			<div className={styles.ourProducts}>
 				<>
-					{showPopup['open'] === true ? <Popup {...showPopup} /> : ''}
+					<Popup {...popupState} />
 				</>
 				{isLoading ? <CardSkeleton cards={9} /> : electronics[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
 				<Pagination
