@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 
 import { CartItem } from './CartItem/CartItem'
@@ -18,6 +18,10 @@ export const ShoppingCart = () => {
     let quantityInitialState = Object.fromEntries(cartProducts.map((el) => ([el._id, '1'])))
     const [quantity, setQuantity] = useState(quantityInitialState)
     const [deliveryModalStatus, setDeliveryModalStatus] = useState(false)
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [deliveryModalStatus]);
 
     const productQuantityHandler = (productId, operation) => {
         setQuantity((quantity) => {
