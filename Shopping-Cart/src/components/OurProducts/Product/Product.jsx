@@ -27,19 +27,18 @@ export const Product = ({
     usbType,
     price,
     chargerIncluded,
-    showNotification,
+    showPopupHandler,
 }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const { addToCartHandler } = useContext(ProductContext);
+
     const addToCart = (product) => {
         try {
             addToCartHandler(product);
-            showNotification(product.item, 'success');
+            showPopupHandler('success', true, 'Successful purchase!', `You successfully added to cart ${item}`)
         } catch (error) {
-            showNotification(product.item, 'error');
+            showPopupHandler('error', true, 'Unsuccessful purchase', `You have already added to cart ${item}`)
         }
-
-
     }
     return (
         <>
