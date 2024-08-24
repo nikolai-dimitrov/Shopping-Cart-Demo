@@ -1,21 +1,23 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Product } from './Product/Product';
-import { ProductContext } from '../../contexts/ProductContext';
 import { CardSkeleton } from '../CardSkeleton/CardSkeleton';
-
-import { splitArrayToSubArrays } from "../../utils/splitArrayToSubArrays";
-
+import { Popup } from '../Popup/Popup';
 import { Pagination, notification } from 'antd';
 
+import { splitArrayToSubArrays } from "../../utils/splitArrayToSubArrays";
 import styles from "./our-products.module.css"
 
 export const OurProducts = () => {
 	const [electronics, setElectronics] = useState([]);
 	const [page, setPage] = useState(1);
 	const [isLoading, setIsLoading] = useState(true);
-	const [api, contextHolder] = notification.useNotification();
-
-	const { testValue } = useContext(ProductContext)
+	const [showPopup, setShowPopup] = useState({
+		'status': undefined,
+		'open': false,
+		'timesOpened': 0,
+		'message': '',
+		'description': ''
+	})
 
 	useEffect(() => {
 		fetch('http://localhost:3030/jsonstore/electronics')
@@ -29,13 +31,9 @@ export const OurProducts = () => {
 			.catch(error => console.log(error.message));
 	}, []);
 
-	const showNotification = (productTitle, status) => {
-		api[`${status}`]({
-			message: status == 'success' ? "Successful purchase!" : "Unsuccessful purchase",
-			description: status == 'success' ? `You successfully added to cart ${productTitle}` : `You have already added ${productTitle}!`,
-			showProgress: true,
-			pauseOnHover: true,
-		})
+	const showPopupHandler = (status, open, message, description) => {
+		console.log(status, open, message, description)
+		setShowPopup(showPopup => ({ ...showPopup, status, open, timesOpened: showPopup['timesOpened'] += 1, message, description }));
 
 	}
 
@@ -45,14 +43,12 @@ export const OurProducts = () => {
 	);
 
 	return (
-
 		<>
-
 			<div className={styles.ourProducts}>
 				<>
-					{contextHolder}
+					{showPopup['open'] === true ? <Popup {...showPopup} /> : ''}
 				</>
-				{isLoading ? <CardSkeleton cards={9} /> : electronics[page - 1]?.map(item => (<Product key={item._id} {...item} showNotification={showNotification} />))}
+				{isLoading ? <CardSkeleton cards={9} /> : electronics[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
 				<Pagination
 					simple={{
 						readOnly: true,
