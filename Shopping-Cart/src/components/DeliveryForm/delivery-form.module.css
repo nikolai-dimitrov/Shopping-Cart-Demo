@@ -8,18 +8,20 @@
 	padding: 8px 16px;
 	border-radius: 8px;
 	text-align: center;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
+	color: white;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
 }
 .deliveryBtn:hover {
-    scale: 1.03;
-
+	scale: 1.03;
 }
 .deliveryBtn:first-child {
 	background-color: rgb(0, 204, 0);
 	margin-bottom: 10px;
 }
 .deliveryBtn:last-child {
-    background-color: black;
+	background-color: black;
+}
+:global(.ant-row) {
+	align-content: center;
 }
