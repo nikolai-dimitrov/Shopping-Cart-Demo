@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { notification } from 'antd';
 
 import styles from './popup.module.css'
-export const Popup = ({ status, timesOpened, message, description }) => {
+export const Popup = ({ currentStatus, timesOpened, message, description }) => {
     const [api, contextHolder] = notification.useNotification();
 
-    const showNotification = (status, message, description) => {
-        if (status) {
-            api[`${status}`]({
+    const showNotification = (currentStatus, message, description) => {
+        console.log(currentStatus)
+        if (currentStatus) {
+            api[`${currentStatus}`]({
                 message: message,
                 description: description,
                 showProgress: true,
@@ -17,7 +18,7 @@ export const Popup = ({ status, timesOpened, message, description }) => {
 
     }
     useEffect(() => {
-        showNotification(status, message, description)
+        showNotification(currentStatus, message, description)
     }, [timesOpened])
 
     return (
