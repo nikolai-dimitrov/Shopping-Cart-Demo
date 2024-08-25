@@ -9,7 +9,7 @@ import {
     ShoppingCartOutlined,
     CarOutlined
 } from '@ant-design/icons'
-import { Flex, Progress } from 'antd';
+import { Flex, Progress } from 'antd'
 import styles from './shopping-cart.module.css'
 export const ShoppingCart = () => {
     const { cartProducts, removeFromCartHandler } = useContext(ProductContext);
@@ -26,9 +26,6 @@ export const ShoppingCart = () => {
     const productQuantityHandler = (productId, operation) => {
         setQuantity((quantity) => {
             let quantityNumber = Number(quantity[productId])
-            if (quantityNumber <= 1 && operation == 'decrement') {
-                quantityNumber += 1
-            }
             operation == 'increment' ? quantityNumber += 1 : quantityNumber -= 1
             return ({
                 ...quantity,
@@ -36,7 +33,7 @@ export const ShoppingCart = () => {
             })
         })
     };
-    
+
     const closeModalHandler = () => {
         setDeliveryModalStatus(false)
     };
@@ -49,6 +46,7 @@ export const ShoppingCart = () => {
 
     const freeShippingPercent = ((grandTotalPrice - shippingTax) / 5000) * 100;
     freeShippingPercent >= 100 ? grandTotalPrice -= shippingTax : grandTotalPrice;
+
     return (
         <>
             <section className={cartProducts.length > 0 ? `${styles.shoppingCart} ${deliveryModalStatus ? `${styles.hideProductSection}` : `${styles.showProductSection}`}` : `${styles.shoppingCart} ${styles.emptyCardLayout}`}>

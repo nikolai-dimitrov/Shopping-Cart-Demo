@@ -28,7 +28,7 @@ export const CartItem = ({ product, removeFromCartHandler, productQuantity, prod
                 <p className={styles.price}>${product.price}</p>
 
                 <div className={styles.quantityContainer}>
-                    <button className={styles.leftSide} onClick={decrementQuantity}>
+                    <button className={styles.leftSide} onClick={decrementQuantity} disabled={productQuantity <= 1 ? true : false}>
                         -
                     </button>
                     <p>{productQuantity}</p>
