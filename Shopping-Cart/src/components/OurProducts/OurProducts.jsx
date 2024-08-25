@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { usePopup } from '../../hooks/usePopup';
-
+import { Popup } from '../Popup/Popup';
 import { Product } from './Product/Product';
 import { CardSkeleton } from '../CardSkeleton/CardSkeleton';
-import { Popup } from '../Popup/Popup';
-import { Pagination, notification } from 'antd';
+
+import { Pagination } from 'antd';
 
 import { splitArrayToSubArrays } from "../../utils/splitArrayToSubArrays";
 import styles from "./our-products.module.css"
@@ -13,7 +13,8 @@ export const OurProducts = () => {
 	const [electronics, setElectronics] = useState([]);
 	const [page, setPage] = useState(1);
 	const [isLoading, setIsLoading] = useState(true);
-	const [popupState, setPopupState] = usePopup()
+	const [popupState, showPopupHandler] = usePopup();
+
 
 	useEffect(() => {
 		fetch('http://localhost:3030/jsonstore/electronics')
@@ -27,22 +28,17 @@ export const OurProducts = () => {
 			.catch(error => console.log(error.message));
 	}, []);
 
-	const showPopupHandler = (status, open, message, description) => {
-		setPopupState(popupState => ({ ...popupState, status, open, timesOpened: popupState['timesOpened'] += 1, message, description }));
-
-	}
 
 	let totalElectronicsCount = electronics.reduce(
 		(count, currentArr) => count + currentArr.length,
 		0
 	);
-
+	
 	return (
 		<>
 			<div className={styles.ourProducts}>
-				<>
-					<Popup {...popupState} />
-				</>
+				<Popup {...popupState} />
+
 				{isLoading ? <CardSkeleton cards={9} /> : electronics[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
 				<Pagination
 					simple={{
