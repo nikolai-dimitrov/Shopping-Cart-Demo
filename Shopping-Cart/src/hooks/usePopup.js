@@ -2,23 +2,20 @@ import { useState } from "react";
 
 export const usePopup = () => {
 	const [popupState, setPopupState] = useState({
-		status: null,
+		currentStatus: null,
 		open: false,
 		timesOpened: 0,
 		message: "",
 		description: "",
 	});
 
-	const showPopupHandler = (status, open, message, description) => {
+	const showPopupHandler = (props) => {
 		setPopupState((popupState) => ({
 			...popupState,
-			status,
-			open,
+			...props,
 			timesOpened: (popupState["timesOpened"] += 1),
-			message,
-			description,
 		}));
 	};
-
+	console.log(popupState, "state");
 	return [popupState, showPopupHandler];
 };

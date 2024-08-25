@@ -35,9 +35,10 @@ export const Product = ({
     const addToCart = (product) => {
         try {
             addToCartHandler(product);
-            showPopupHandler('success', true, 'Successful purchase!', `You successfully added to cart ${item}`)
+            showPopupHandler({ currentStatus: 'success', open: true, message: 'Successful purchase!', description: `You successfully added to cart ${item}` })
+
         } catch (error) {
-            showPopupHandler('error', true, 'Unsuccessful purchase', `You have already added to cart ${item}`)
+            showPopupHandler({ currentStatus: 'error', open: true, message: 'Unsuccessful purchase!', description: `You have already added ${item}` })
         }
     }
     return (

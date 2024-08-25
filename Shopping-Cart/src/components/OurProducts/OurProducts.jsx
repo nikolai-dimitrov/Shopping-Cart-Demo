@@ -33,7 +33,7 @@ export const OurProducts = () => {
 		(count, currentArr) => count + currentArr.length,
 		0
 	);
-	
+
 	return (
 		<>
 			<div className={styles.ourProducts}>
