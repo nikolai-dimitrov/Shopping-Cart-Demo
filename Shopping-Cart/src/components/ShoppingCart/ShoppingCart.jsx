@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { ProductContext } from '../../contexts/ProductContext'
 import { usePopup } from '../../hooks/usePopup'
 
@@ -6,17 +7,19 @@ import { CartItem } from './CartItem/CartItem'
 import { DeliveryModal } from './DeliveryModal/DeliveryModal'
 import { Popup } from '../Popup/Popup'
 
-import { Button, Result } from 'antd';
 import {
 
     ShoppingCartOutlined,
     CarOutlined
 } from '@ant-design/icons'
-import { Flex, Progress } from 'antd'
+import { Flex, Progress, Button, Result } from 'antd'
+
+import { calculateOrderExpenses } from '../../utils/calculateOrderExpenses'
 import styles from './shopping-cart.module.css'
+
 export const ShoppingCart = () => {
     const { cartProducts, removeFromCartHandler, successOrderHandler } = useContext(ProductContext);
-
+    const navigate = useNavigate()
     // Create object with key:productId , initialValue: '1' for all products in the cart than pass it as initial state.
     let quantityInitialState = Object.fromEntries(cartProducts.map((el) => ([el._id, '1'])))
     const [quantity, setQuantity] = useState(quantityInitialState)
@@ -51,27 +54,28 @@ export const ShoppingCart = () => {
         setShowResultModal(false)
     };
 
-    // Export in independent function (util)
-    let subTotalPrice = 0;
-    cartProducts.forEach((el) => subTotalPrice += el.price * quantity[el._id]);
-    const salesTax = subTotalPrice * 0.1;
-    const shippingTax = 50;
-    let grandTotalPrice = subTotalPrice + salesTax + shippingTax;
+    const goToProducts = () => {
+        navigate('/products')
+    }
 
-    const freeShippingPercent = ((grandTotalPrice - shippingTax) / 5000) * 100;
-    freeShippingPercent >= 100 ? grandTotalPrice -= shippingTax : grandTotalPrice;
+    const {
+        subTotalPrice,
+        salesTax,
+        grandTotalPrice,
+        freeShippingPercent,
+    } = calculateOrderExpenses(cartProducts, quantity);
 
     return (
         <>
 
             {showResultModal ?
-            // Successful order result modal
+                // Successful order result modal
                 <Result
                     status="success"
                     title="Successfully Purchased Cloud Server ECS!"
                     subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
                     extra={[
-                        <Button type="primary" key="console">
+                        <Button type="primary" key="console" onClick={goToProducts}>
                             Products
                         </Button>,
                         <Button key="buy" onClick={closeModalHandler}>Cart</Button>,
@@ -98,6 +102,7 @@ export const ShoppingCart = () => {
                                         <li>Total</li>
                                     </ul>
                                 </div>
+                                {/* Render all products in cart */}
                                 <div className={styles.productCards}>
                                     {cartProducts.map(product => (<CartItem key={product._id} product={product} productQuantity={quantity[product._id]} productQuantityHandler={productQuantityHandler} removeFromCartHandler={removeFromCartHandler} showPopupHandler={showPopupHandler} />))}
                                 </div>
