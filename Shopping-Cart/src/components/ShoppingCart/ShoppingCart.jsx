@@ -1,9 +1,11 @@
 import { useState, useEffect, useContext } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
+import { usePopup } from '../../hooks/usePopup'
 
 import { CartItem } from './CartItem/CartItem'
 import { DeliveryModal } from '../DeliveryModal/DeliveryModal'
-import { Reveal } from '../Reveal/Reveal'
+import { Popup } from '../Popup/Popup'
+
 import {
 
     ShoppingCartOutlined,
@@ -17,7 +19,9 @@ export const ShoppingCart = () => {
     // Create object with key:productId , initialValue: '1' for all products in the cart than pass it as initial state.
     let quantityInitialState = Object.fromEntries(cartProducts.map((el) => ([el._id, '1'])))
     const [quantity, setQuantity] = useState(quantityInitialState)
+
     const [deliveryModalStatus, setDeliveryModalStatus] = useState(false)
+    const [popupState, showPopupHandler] = usePopup()
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -49,6 +53,7 @@ export const ShoppingCart = () => {
 
     return (
         <>
+            <Popup {...popupState} />
             <section className={cartProducts.length > 0 ? `${styles.shoppingCart} ${deliveryModalStatus ? `${styles.hideProductSection}` : `${styles.showProductSection}`}` : `${styles.shoppingCart} ${styles.emptyCardLayout}`}>
                 {cartProducts.length == 0 ? <div className={styles.iconContainer}>
                     <div className={styles.innerIconContainer}>
@@ -67,7 +72,7 @@ export const ShoppingCart = () => {
                             </ul>
                         </div>
                         <div className={styles.productCards}>
-                            {cartProducts.map(product => (<CartItem key={product._id} product={product} productQuantity={quantity[product._id]} productQuantityHandler={productQuantityHandler} removeFromCartHandler={removeFromCartHandler} />))}
+                            {cartProducts.map(product => (<CartItem key={product._id} product={product} productQuantity={quantity[product._id]} productQuantityHandler={productQuantityHandler} removeFromCartHandler={removeFromCartHandler} showPopupHandler={showPopupHandler} />))}
                         </div>
                         <div className={styles.checkOutContainer}>
                             <div className={styles.description}>

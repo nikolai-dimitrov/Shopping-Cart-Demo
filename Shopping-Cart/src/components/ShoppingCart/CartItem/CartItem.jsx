@@ -1,15 +1,27 @@
 import { useState } from 'react';
 import styles from './cart-item.module.css';
-export const CartItem = ({ product, removeFromCartHandler, productQuantity, productQuantityHandler }) => {
+export const CartItem = ({ product,
+    removeFromCartHandler,
+    productQuantity,
+    productQuantityHandler,
+    showPopupHandler,
+}) => {
+
     const incrementQuantity = () => {
         productQuantityHandler(product._id, 'increment')
+        showPopupHandler({ currentStatus: 'warning', message: 'Increase quantity!', description: `You successfully increased quantity of ${product.item} by 1` })
 
     }
 
     const decrementQuantity = () => {
         productQuantityHandler(product._id, 'decrement')
+        showPopupHandler({ currentStatus: 'warning', message: 'Decrease quantity!', description: `You successfully decreased quantity of ${product.item} by 1` })
     }
 
+    const removeFromCart = (product) => {
+        removeFromCartHandler(product)
+        showPopupHandler({ currentStatus: 'success', message: 'Removed product!', description: `You successfully removed ${product.item} from cart` })
+    }
 
     return (
         <>
@@ -39,7 +51,7 @@ export const CartItem = ({ product, removeFromCartHandler, productQuantity, prod
                 <div className={styles.totalPriceContainer}>
                     <span className={styles.totalPrice}>${product.price * productQuantity}</span>
 
-                    <button className={styles.btn} onClick={() => removeFromCartHandler(product)}>
+                    <button className={styles.btn} onClick={() => removeFromCart(product)}>
                         X
                     </button>
                 </div>
