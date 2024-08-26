@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Form, Input, InputNumber } from 'antd';
+import { validators } from '../../../utils/validators';
+import { Form, Input } from 'antd';
 import styles from './delivery-form.module.css';
 
 const layout = {
@@ -21,11 +22,16 @@ const validateMessages = {
 
 };
 
-const onFinish = (values) => {
-    console.log(values);
-};
 
-export const DeliveryForm = ({ closeModalHandler }) => {
+
+export const DeliveryForm = ({
+    closeModalHandler,
+    successOrder
+}) => {
+    const onFinish = () => {
+        successOrder()
+    };
+
     return (
         <Form
             {...layout}
@@ -43,17 +49,10 @@ export const DeliveryForm = ({ closeModalHandler }) => {
                     {
                         required: true,
                     },
-                    // {
-                    //     validator(rule, value) {
-                    //         return new Promise((resolve, reject) => {
-                    //             if (value && value.length > 2) {
-                    //                 resolve();
-                    //             } else {
-                    //                 reject('First Name must be greater than 2 characters.')
-                    //             }
-                    //         })
-                    //     },
-                    // },
+                    {
+                        validator: validators.minLenValidator('First Name should be at least 2 characters long.')
+                    },
+
                 ]}
             >
                 <Input />
@@ -64,8 +63,11 @@ export const DeliveryForm = ({ closeModalHandler }) => {
                 rules={[
                     {
                         required: true,
-
                     },
+                    {
+                        validator: validators.minLenValidator('Last Name should be at least 2 characters long.')
+
+                    }
                 ]}
             >
                 <Input />
@@ -88,40 +90,68 @@ export const DeliveryForm = ({ closeModalHandler }) => {
             <Form.Item
                 name={'Country'}
                 label="Country"
-                rules={[{
+                rules={[
+                    {
 
-                    required: 'true',
-                }]}
+                        required: 'true',
+                    },
+                    {
+                        validator: validators.minLenValidator('Country should be at least 2 characters long.')
+
+                    }
+                ]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
                 name={'City'}
                 label="City"
-                rules={[{
+                rules={[
+                    {
 
-                    required: 'true',
-                }]}
+                        required: 'true',
+                    },
+                    {
+                        validator: validators.minLenValidator('City should be at least 2 characters long.')
+
+                    }
+                ]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
                 name={'Zip Code'}
                 label="Zip Code"
-                rules={[{
+                rules={[
+                    {
 
-                    required: 'true',
-                }]}
+                        required: 'true',
+                    },
+                    {
+                        validator: validators.minLenValidator('Zip Code should be at least 2 characters long.')
+
+                    },
+                    {
+                        validator: validators.maxLenValidator('Zip Code should be less than 20 characters long.')
+
+                    }
+                ]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
                 name={'Address'}
                 label="Address"
-                rules={[{
+                rules={[
+                    {
 
-                    required: 'true',
-                }]}
+                        required: 'true',
+                    },
+                    {
+                        validator: validators.minLenValidator('Address should be at least 5 characters long.')
+
+                    }
+                ]}
             >
                 <Input />
             </Form.Item>

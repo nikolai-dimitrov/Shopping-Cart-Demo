@@ -17,6 +17,11 @@
 	}
 }
 
+.cartContainer {
+	height: 100%;
+	position: relative;
+}
+
 .shoppingCart {
 	height: 100%;
 	position: relative;

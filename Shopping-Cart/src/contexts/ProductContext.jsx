@@ -22,10 +22,15 @@ export const ProductProvider = ({ children }) => {
         setCartProducts(calculatedState);
     }
 
+    const successOrderHandler = () => {
+        setCartProducts((cartProducts) => []);
+        localStorage.removeItem('cartProducts');
+    }
 
     const productContextValues = {
         addToCartHandler,
         removeFromCartHandler,
+        successOrderHandler,
         cartProducts,
     }
 
