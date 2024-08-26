@@ -1,5 +1,5 @@
 import React from 'react';
-import { validators } from '../../../utils/validators';
+import { validators } from '../../../validators/validators';
 import { Form, Input } from 'antd';
 import styles from './delivery-form.module.css';
 

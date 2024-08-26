@@ -4,7 +4,6 @@ export function minLenValidator(message) {
 			if (value && value.length > 2) {
 				resolve();
 			} else {
-				console.log(message);
 				reject(message);
 			}
 		});
