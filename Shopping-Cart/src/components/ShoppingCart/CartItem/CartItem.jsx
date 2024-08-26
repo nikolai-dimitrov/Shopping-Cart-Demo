@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './cart-item.module.css';
-export const CartItem = ({ product,
+export const CartItem = ({
+    product,
     removeFromCartHandler,
     productQuantity,
     productQuantityHandler,
@@ -18,7 +19,7 @@ export const CartItem = ({ product,
         showPopupHandler({ currentStatus: 'warning', message: 'Decrease quantity!', description: `You successfully decreased quantity of ${product.item} by 1` })
     }
 
-    const removeFromCart = (product) => {
+    const removeFromCart = () => {
         removeFromCartHandler(product)
         showPopupHandler({ currentStatus: 'success', message: 'Removed product!', description: `You successfully removed ${product.item} from cart` })
     }
@@ -51,7 +52,7 @@ export const CartItem = ({ product,
                 <div className={styles.totalPriceContainer}>
                     <span className={styles.totalPrice}>${product.price * productQuantity}</span>
 
-                    <button className={styles.btn} onClick={() => removeFromCart(product)}>
+                    <button className={styles.btn} onClick={removeFromCart}>
                         X
                     </button>
                 </div>
