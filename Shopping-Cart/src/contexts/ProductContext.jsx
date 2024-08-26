@@ -7,17 +7,14 @@ export const ProductContext = createContext();
 export const ProductProvider = ({ children }) => {
     const [cartProducts, setCartProducts] = useLocalStorage('cartProducts', []);
 
-
     const addToCartHandler = (currentProduct) => {
         const existingProduct = cartProducts.filter(i => i._id == currentProduct._id);
         if (existingProduct.length > 0) {
-            throw new Error('This product has already been added!')
+            throw new Error(`You have already added ${currentProduct.item}`)
         } else {
             const calculatedState = [...cartProducts, currentProduct];
             setCartProducts(calculatedState);
         }
-
-
     }
 
     const removeFromCartHandler = (currentProduct) => {
@@ -26,12 +23,10 @@ export const ProductProvider = ({ children }) => {
     }
 
 
-    const testValue = 5
     const productContextValues = {
         addToCartHandler,
         removeFromCartHandler,
         cartProducts,
-        testValue,
     }
 
     return (
