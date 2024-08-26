@@ -174,11 +174,41 @@
 	padding: 10px 17px 10px 20px;
 	cursor: pointer;
 }
+@media (max-width: 1366px) {
+	.innerIconContainer {
+		padding: 57px 20px 57px 20px;
+	}
+}
+
+@media (max-width: 1280px) {
+	.iconContainer {
+		width: 35%;
+	}
+	.innerIconContainer {
+		padding: 72px 20px 65px 20px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.iconContainer {
+		width: 44%;
+	}
+}
+@media (max-width: 950px) {
+	.iconContainer {
+		width: 39%;
+	}
+}
 
 @media (max-width: 768px) {
+	.iconContainer {
+		width: 52%;
+	}
+
 	.checkOutContainer .description {
 		width: 46%;
 	}
+
 	.message,
 	.progressContainer,
 	.checkOutBtn {
@@ -186,6 +216,12 @@
 	}
 }
 @media (max-width: 576px) {
+	.iconContainer {
+		width: 70%;
+	}
+	.innerIconContainer {
+		padding: 80px 26px 80px 20px;
+	}
 	.checkOutContainer .description {
 		width: 56%;
 	}
@@ -201,6 +237,9 @@
 	}
 	.checkOutContainer .description {
 		width: 100%;
+	}
+	.iconContainer {
+		width: 92%;
 	}
 	.message,
 	.progressContainer,
