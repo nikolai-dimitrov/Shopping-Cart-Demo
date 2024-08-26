@@ -3,7 +3,7 @@ import { ProductContext } from '../../contexts/ProductContext'
 import { usePopup } from '../../hooks/usePopup'
 
 import { CartItem } from './CartItem/CartItem'
-import { DeliveryModal } from '../DeliveryModal/DeliveryModal'
+import { DeliveryModal } from './DeliveryModal/DeliveryModal'
 import { Popup } from '../Popup/Popup'
 
 import {
