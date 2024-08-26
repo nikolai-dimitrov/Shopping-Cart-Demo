@@ -1,8 +1,8 @@
 // ReactJS
 import React from 'react';
-import { useState, useContext } from 'react'
+import { useState, useContext } from 'react';
 
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom';
 // Custom Components & context
 import { ProductContext } from '../../contexts/ProductContext';
 
@@ -15,8 +15,7 @@ import {
 
 import { Menu } from 'antd';
 // Utils & CSS
-import styles from './navigation.module.css'
-
+import styles from './navigation.module.css';
 
 const pathMapper = {
     '/': '1',
@@ -31,7 +30,7 @@ export const Navigation = () => {
     const [navOpen, setNavOpen] = useState(false);
     const { pathname } = useLocation();
     const changeNavStatus = () => {
-        setNavOpen(!navOpen)
+        setNavOpen(!navOpen);
     }
 
     const items = [

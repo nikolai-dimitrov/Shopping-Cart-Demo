@@ -1,9 +1,9 @@
-import { useState, useContext } from 'react'
-import { ProductContext } from '../../../contexts/ProductContext'
+import { useState, useContext } from 'react';
+import { ProductContext } from '../../../contexts/ProductContext';
 
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import Skeleton from 'react-loading-skeleton';
 import { Carousel } from 'antd';
+import Skeleton from 'react-loading-skeleton';
 
 import styles from './product.module.css';
 
@@ -15,6 +15,7 @@ const contentStyle = {
     background: '#006ba1',
 
 };
+
 export const Product = ({
     _id,
     item,
@@ -35,10 +36,10 @@ export const Product = ({
     const addToCart = (product) => {
         try {
             addToCartHandler(product);
-            showPopupHandler({ currentStatus: 'success', message: 'Successful purchase!', description: `You successfully added to cart ${item}` })
+            showPopupHandler({ currentStatus: 'success', message: 'Successful purchase!', description: `You successfully added to cart ${item}` });
 
         } catch (error) {
-            showPopupHandler({ currentStatus: 'error', message: 'Unsuccessful purchase!', description: `${error.message}` })
+            showPopupHandler({ currentStatus: 'error', message: 'Unsuccessful purchase!', description: `${error.message}` });
         }
     }
 

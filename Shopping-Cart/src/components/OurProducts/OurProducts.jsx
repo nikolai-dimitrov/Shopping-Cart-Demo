@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { usePopup } from '../../hooks/usePopup';
+
 import { Popup } from '../Popup/Popup';
 import { Product } from './Product/Product';
 import { CardSkeleton } from '../CardSkeleton/CardSkeleton';

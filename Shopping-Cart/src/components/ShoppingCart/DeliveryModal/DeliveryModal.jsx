@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
-import { DeliveryForm } from '../DeliveryForm/DeliveryForm'
-import styles from "./delivery-modal.module.css"
+import { useEffect } from 'react';
+import { DeliveryForm } from '../DeliveryForm/DeliveryForm';
+import styles from "./delivery-modal.module.css";
+
 export const DeliveryModal = ({
     showModal,
     closeModalHandler,

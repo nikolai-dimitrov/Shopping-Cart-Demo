@@ -29,7 +29,7 @@ export const DeliveryForm = ({
     successOrder
 }) => {
     const onFinish = () => {
-        successOrder()
+        successOrder();
     };
 
     return (

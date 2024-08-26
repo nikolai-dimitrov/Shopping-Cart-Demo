@@ -1,62 +1,63 @@
-import { useState, useEffect, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { ProductContext } from '../../contexts/ProductContext'
-import { usePopup } from '../../hooks/usePopup'
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { CartItem } from './CartItem/CartItem'
-import { DeliveryModal } from './DeliveryModal/DeliveryModal'
-import { Popup } from '../Popup/Popup'
+import { ProductContext } from '../../contexts/ProductContext';
+import { usePopup } from '../../hooks/usePopup';
+
+import { CartItem } from './CartItem/CartItem';
+import { DeliveryModal } from './DeliveryModal/DeliveryModal';
+import { Popup } from '../Popup/Popup';
 
 import {
 
     ShoppingCartOutlined,
     CarOutlined
-} from '@ant-design/icons'
-import { Flex, Progress, Button, Result } from 'antd'
+} from '@ant-design/icons';
+import { Flex, Progress, Button, Result } from 'antd';
 
-import { calculateOrderExpenses } from '../../utils/calculateOrderExpenses'
-import styles from './shopping-cart.module.css'
+import { calculateOrderExpenses } from '../../utils/calculateOrderExpenses';
+import styles from './shopping-cart.module.css';
 
 export const ShoppingCart = () => {
     const { cartProducts, removeFromCartHandler, successOrderHandler } = useContext(ProductContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     // Create object with key:productId , initialValue: '1' for all products in the cart than pass it as initial state.
-    let quantityInitialState = Object.fromEntries(cartProducts.map((el) => ([el._id, '1'])))
-    const [quantity, setQuantity] = useState(quantityInitialState)
+    let quantityInitialState = Object.fromEntries(cartProducts.map((el) => ([el._id, '1'])));
+    const [quantity, setQuantity] = useState(quantityInitialState);
 
-    const [deliveryModalStatus, setDeliveryModalStatus] = useState(false)
-    const [showResultModal, setShowResultModal] = useState(false)
-    const [popupState, showPopupHandler] = usePopup()
+    const [deliveryModalStatus, setDeliveryModalStatus] = useState(false);
+    const [showResultModal, setShowResultModal] = useState(false);
+    const [popupState, showPopupHandler] = usePopup();
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
     }, [deliveryModalStatus]);
 
     const productQuantityHandler = (productId, operation) => {
         setQuantity((quantity) => {
-            let quantityNumber = Number(quantity[productId])
-            operation == 'increment' ? quantityNumber += 1 : quantityNumber -= 1
+            let quantityNumber = Number(quantity[productId]);
+            operation == 'increment' ? quantityNumber += 1 : quantityNumber -= 1;
             return ({
                 ...quantity,
                 [productId]: quantityNumber,
-            })
-        })
+            });
+        });
     };
 
     const successOrder = () => {
-        successOrderHandler()
-        setShowResultModal((showResultModal) => true)
-    }
+        successOrderHandler();
+        setShowResultModal((showResultModal) => true);
+    };
 
     // Closes both (DeliveryModal and ResultModal) section.
     const closeModalHandler = () => {
-        setDeliveryModalStatus(false)
-        setShowResultModal(false)
+        setDeliveryModalStatus(false);
+        setShowResultModal(false);
     };
 
     const goToProducts = () => {
-        navigate('/products')
-    }
+        navigate('/products');
+    };
 
     const {
         subTotalPrice,

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './cart-item.module.css';
+
 export const CartItem = ({
     product,
     removeFromCartHandler,
@@ -9,19 +10,19 @@ export const CartItem = ({
 }) => {
 
     const incrementQuantity = () => {
-        productQuantityHandler(product._id, 'increment')
-        showPopupHandler({ currentStatus: 'warning', message: 'Increase quantity!', description: `You successfully increased quantity of ${product.item} by 1` })
+        productQuantityHandler(product._id, 'increment');
+        showPopupHandler({ currentStatus: 'warning', message: 'Increase quantity!', description: `You successfully increased quantity of ${product.item} by 1` });
 
     }
 
     const decrementQuantity = () => {
-        productQuantityHandler(product._id, 'decrement')
-        showPopupHandler({ currentStatus: 'warning', message: 'Decrease quantity!', description: `You successfully decreased quantity of ${product.item} by 1` })
+        productQuantityHandler(product._id, 'decrement');
+        showPopupHandler({ currentStatus: 'warning', message: 'Decrease quantity!', description: `You successfully decreased quantity of ${product.item} by 1` });
     }
 
     const removeFromCart = () => {
-        removeFromCartHandler(product)
-        showPopupHandler({ currentStatus: 'success', message: 'Removed product!', description: `You successfully removed ${product.item} from cart` })
+        removeFromCartHandler(product);
+        showPopupHandler({ currentStatus: 'success', message: 'Removed product!', description: `You successfully removed ${product.item} from cart` });
     }
 
     return (

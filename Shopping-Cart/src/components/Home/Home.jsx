@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import codingImg from '../../assets/coding-reactjs-image.png';
 import shoppingImg from '../../assets/shoping-card-img.webp';
 import styles from './home.module.css';
+
 export const Home = () => {
     return (
         <>

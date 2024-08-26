@@ -9,8 +9,6 @@ export const usePopup = () => {
 	});
 
 	const showPopupHandler = (props) => {
-		console.log(props);
-
 		setPopupState((popupState) => ({
 			...popupState,
 			...props,
