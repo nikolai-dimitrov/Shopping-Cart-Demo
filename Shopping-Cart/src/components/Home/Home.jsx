@@ -1,4 +1,4 @@
-import { Reveal } from '../Reveal/Reveal';
+import { Reveal } from './Reveal/Reveal';
 
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
