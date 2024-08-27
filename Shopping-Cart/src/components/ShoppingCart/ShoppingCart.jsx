@@ -75,8 +75,8 @@ export const ShoppingCart = () => {
                 // Successful order result modal
                 <Result
                     status="success"
-                    title="Successfully Purchased Cloud Server ECS!"
-                    subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+                    title="Successfully Placed an order!"
+                    subTitle="Your order is going to be send within 5 business days."
                     extra={[
                         <Button type="primary" key="console" onClick={goToProducts}>
                             Products
