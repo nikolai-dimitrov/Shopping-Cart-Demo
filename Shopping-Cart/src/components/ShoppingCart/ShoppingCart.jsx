@@ -21,17 +21,18 @@ import styles from './shopping-cart.module.css';
 export const ShoppingCart = () => {
     const { cartProducts, removeFromCartHandler, successOrderHandler } = useContext(ProductContext);
     const navigate = useNavigate();
-    // Create object with key:productId , initialValue: '1' for all products in the cart than pass it as initial state.
+
+    // Create object for every product with key:productId, initialValue: '1' for all products in the cart.
     let quantityInitialState = Object.fromEntries(cartProducts.map((el) => ([el._id, '1'])));
     const [quantity, setQuantity] = useState(quantityInitialState);
 
-    const [deliveryModalStatus, setDeliveryModalStatus] = useState(false);
+    const [showDeliveryModal, setShowDeliveryModal] = useState(false);
     const [showResultModal, setShowResultModal] = useState(false);
     const [popupState, showPopupHandler] = usePopup();
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [deliveryModalStatus]);
+    }, [showDeliveryModal]);
 
     const productQuantityHandler = (productId, operation) => {
         setQuantity((quantity) => {
@@ -51,7 +52,7 @@ export const ShoppingCart = () => {
 
     // Closes both (DeliveryModal and ResultModal) section.
     const closeModalHandler = () => {
-        setDeliveryModalStatus(false);
+        setShowDeliveryModal(false);
         setShowResultModal(false);
     };
 
@@ -83,7 +84,7 @@ export const ShoppingCart = () => {
                     ]}
                 />
                 : <div className={styles.cartContainer}>
-                    <section className={cartProducts.length > 0 ? `${styles.shoppingCart} ${deliveryModalStatus ? `${styles.hideProductSection}` : `${styles.showProductSection}`}` : `${styles.shoppingCart} ${styles.emptyCardLayout}`}>
+                    <section className={cartProducts.length > 0 ? `${styles.shoppingCart} ${showDeliveryModal ? `${styles.hideProductSection}` : `${styles.showProductSection}`}` : `${styles.shoppingCart} ${styles.emptyCardLayout}`}>
                         {cartProducts.length == 0 ?
                             // Cart page when there aren't any products there.
                             <div className={styles.iconContainer}>
@@ -132,12 +133,12 @@ export const ShoppingCart = () => {
                                         <Progress percent={freeShippingPercent} size="active" showInfo={false} />
                                     </Flex>
 
-                                    <button className={styles.checkOutBtn} onClick={() => setDeliveryModalStatus(deliveryModalStatus => true)}>Check out</button>
+                                    <button className={styles.checkOutBtn} onClick={() => setShowDeliveryModal(showDeliveryModal => true)}>Check out</button>
                                 </div>
                             </>
                         }
                     </section >
-                    <DeliveryModal showModal={deliveryModalStatus} closeModalHandler={closeModalHandler} successOrder={successOrder} />
+                    <DeliveryModal showDeliveryModal={showDeliveryModal} closeModalHandler={closeModalHandler} successOrder={successOrder} />
                 </div>
             }
             <Popup {...popupState} />

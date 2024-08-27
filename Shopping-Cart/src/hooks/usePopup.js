@@ -3,7 +3,7 @@ import { useState } from "react";
 export const usePopup = () => {
 	const [popupState, setPopupState] = useState({
 		currentStatus: null,
-		timesOpened: 0,
+		triggerNotification: false,
 		message: "",
 		description: "",
 	});
@@ -12,7 +12,7 @@ export const usePopup = () => {
 		setPopupState((popupState) => ({
 			...popupState,
 			...props,
-			timesOpened: (popupState["timesOpened"] += 1),
+			triggerNotification: !popupState["triggerNotification"],
 		}));
 	};
 	return [popupState, showPopupHandler];

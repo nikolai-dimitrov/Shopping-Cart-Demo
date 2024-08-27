@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { notification } from 'antd';
 
-export const Popup = ({ currentStatus, timesOpened, message, description }) => {
+export const Popup = ({ currentStatus, triggerNotification, message, description }) => {
     const [api, contextHolder] = notification.useNotification();
 
     const showNotification = (currentStatus, message, description) => {
@@ -17,9 +17,11 @@ export const Popup = ({ currentStatus, timesOpened, message, description }) => {
 
 
     }
+
+    // triggerNotification is only used to trigger useEffect and show the notification
     useEffect(() => {
         showNotification(currentStatus, message, description);
-    }, [timesOpened]);
+    }, [triggerNotification]);
 
     return (
         <>

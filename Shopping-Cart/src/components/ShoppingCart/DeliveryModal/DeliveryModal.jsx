@@ -1,15 +1,14 @@
-import { useEffect } from 'react';
 import { DeliveryForm } from '../DeliveryForm/DeliveryForm';
 import styles from "./delivery-modal.module.css";
 
 export const DeliveryModal = ({
-    showModal,
+    showDeliveryModal,
     closeModalHandler,
     successOrder
 }) => {
     return (
         <>
-            <section className={showModal ? `${styles.delivery} ${styles.showDeliveryModal} ` : `${styles.delivery}`}>
+            <section className={showDeliveryModal ? `${styles.delivery} ${styles.showDeliveryModal} ` : `${styles.delivery}`}>
                 <h1>Finish purchase</h1>
                 <DeliveryForm closeModalHandler={closeModalHandler} successOrder={successOrder} />
             </section>

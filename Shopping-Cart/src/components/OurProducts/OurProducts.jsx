@@ -21,6 +21,8 @@ export const OurProducts = () => {
 		fetch('http://localhost:3030/jsonstore/electronics')
 			.then(response => response.json())
 			.then(data => {
+				// Create matrix with arrays with max 9 elements for every page.
+				// Products for every page is sub array.
 				const nestedArrays = splitArrayToSubArrays(Object.values(data));
 				setElectronics(nestedArrays);
 				setIsLoading(false);
@@ -34,7 +36,7 @@ export const OurProducts = () => {
 		(count, currentArr) => count + currentArr.length,
 		0
 	);
-
+	
 	return (
 		<>
 			<div className={styles.ourProducts}>
