@@ -1,6 +1,6 @@
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
-import styles from './reveal.module.css'
+import styles from './reveal.module.css';
 export const Reveal = ({ children }) => {
     return (
         <div className={styles.revealContainer}>

@@ -10,7 +10,7 @@ export const ProductProvider = ({ children }) => {
     const addToCartHandler = (currentProduct) => {
         const existingProduct = cartProducts.filter(i => i._id == currentProduct._id);
         if (existingProduct.length > 0) {
-            throw new Error(`You have already added ${currentProduct.item}`)
+            throw new Error(`You have already added ${currentProduct.item}`);
         } else {
             const calculatedState = [...cartProducts, currentProduct];
             setCartProducts(calculatedState);

@@ -29,7 +29,7 @@ export const DeliveryForm = ({
     successOrder
 }) => {
     const onFinish = () => {
-        successOrder()
+        successOrder();
     };
 
     return (
@@ -53,6 +53,12 @@ export const DeliveryForm = ({
                         validator: validators.minLenValidator('First Name should be at least 2 characters long.')
                     },
 
+                    {
+                        validator: validators.nameValidator('Invalid name.')
+                    },
+                    {
+                        validator: validators.whiteSpaceValidator('Field should contain characters instead of white spaces.')
+                    },
                 ]}
             >
                 <Input />
@@ -67,7 +73,14 @@ export const DeliveryForm = ({
                     {
                         validator: validators.minLenValidator('Last Name should be at least 2 characters long.')
 
-                    }
+                    },
+                    {
+                        validator: validators.nameValidator('Invalid name')
+                    },
+                    {
+                        validator: validators.whiteSpaceValidator('Field should contain characters instead of white spaces.')
+                    },
+
                 ]}
             >
                 <Input />
@@ -98,7 +111,10 @@ export const DeliveryForm = ({
                     {
                         validator: validators.minLenValidator('Country should be at least 2 characters long.')
 
-                    }
+                    },
+                    {
+                        validator: validators.whiteSpaceValidator('Field should contain characters instead of white spaces.')
+                    },
                 ]}
             >
                 <Input />
@@ -114,7 +130,10 @@ export const DeliveryForm = ({
                     {
                         validator: validators.minLenValidator('City should be at least 2 characters long.')
 
-                    }
+                    },
+                    {
+                        validator: validators.whiteSpaceValidator('Field should contain characters instead of white spaces.')
+                    },
                 ]}
             >
                 <Input />
@@ -134,7 +153,10 @@ export const DeliveryForm = ({
                     {
                         validator: validators.maxLenValidator('Zip Code should be less than 20 characters long.')
 
-                    }
+                    },
+                    {
+                        validator: validators.whiteSpaceValidator('Field should contain characters instead of white spaces.')
+                    },
                 ]}
             >
                 <Input />
@@ -150,7 +172,10 @@ export const DeliveryForm = ({
                     {
                         validator: validators.minLenValidator('Address should be at least 5 characters long.')
 
-                    }
+                    },
+                    {
+                        validator: validators.whiteSpaceValidator('Field should contain characters instead of white spaces.')
+                    },
                 ]}
             >
                 <Input />

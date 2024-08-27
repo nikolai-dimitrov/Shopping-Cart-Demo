@@ -1,4 +1,4 @@
-import { Reveal } from '../Reveal/Reveal';
+import { Reveal } from './Reveal/Reveal';
 
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 import codingImg from '../../assets/coding-reactjs-image.png';
 import shoppingImg from '../../assets/shoping-card-img.webp';
 import styles from './home.module.css';
+
 export const Home = () => {
     return (
         <>
+            {/* Framer motion title */}
             <div className={styles.home}>
                 <motion.h1 style={{ position: 'relative' }} variants={{
                     hidden: { opacity: 0, y: 20 },
@@ -17,6 +19,7 @@ export const Home = () => {
                     initial='hidden'
                     animate='visible'
                     transition={{ duration: 0.5, delay: 0.1 }} className={styles.heading}><span className={styles.first}>Welcome</span> <span className={styles.second}>to</span> <span className={styles.third}>the</span> <span className={styles.fourth}>E-Store</span></motion.h1>
+                {/* Reveal information  */}
                 <div className={styles.informationContainer}>
                     <div className={styles.informationHeadingContainer}>
                         <motion.h1 variants={{
@@ -65,6 +68,7 @@ export const Home = () => {
                         <a href="#">GitHub</a>
                     </Reveal>
                 </div>
+                {/* Framer motion images */}
                 <div className={styles.framerMotionContainer}>
                     <motion.div
                         variants={{

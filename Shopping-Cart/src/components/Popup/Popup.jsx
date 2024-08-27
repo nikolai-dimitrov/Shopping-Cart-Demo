@@ -1,25 +1,27 @@
 import { useEffect } from 'react';
+
 import { notification } from 'antd';
 
-import styles from './popup.module.css'
-export const Popup = ({ currentStatus, timesOpened, message, description }) => {
+export const Popup = ({ currentStatus, triggerNotification, message, description }) => {
     const [api, contextHolder] = notification.useNotification();
 
     const showNotification = (currentStatus, message, description) => {
-        console.log(currentStatus)
         if (currentStatus) {
             api[`${currentStatus}`]({
                 message: message,
                 description: description,
                 showProgress: true,
                 pauseOnHover: true,
-            })
-        }
+            });
+        };
+
 
     }
+
+    // triggerNotification is only used to trigger useEffect and show the notification
     useEffect(() => {
-        showNotification(currentStatus, message, description)
-    }, [timesOpened])
+        showNotification(currentStatus, message, description);
+    }, [triggerNotification]);
 
     return (
         <>
