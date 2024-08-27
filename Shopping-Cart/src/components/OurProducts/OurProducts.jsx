@@ -3,7 +3,7 @@ import { usePopup } from '../../hooks/usePopup';
 
 import { Popup } from '../Popup/Popup';
 import { Product } from './Product/Product';
-import { CardSkeleton } from '../CardSkeleton/CardSkeleton';
+import { CardSkeleton } from './CardSkeleton/CardSkeleton';
 
 import { Pagination } from 'antd';
 
