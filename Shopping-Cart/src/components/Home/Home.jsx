@@ -65,7 +65,7 @@ export const Home = () => {
 
                     <Reveal>
                         <p>By clicking the button below you are going to visit my GitHub.</p>
-                        <a href="#">GitHub</a>
+                        <a href="https://github.com/nikolai-dimitrov">GitHub</a>
                     </Reveal>
                 </div>
                 {/* Framer motion images */}
