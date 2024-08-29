@@ -59,11 +59,11 @@ A main reason about doing this project is trying some libraries responsible for 
 
 # Getting started 💻
 
-1.  **Clone the repository** ✅ 
+1.  **Clone the repository** ✅
 
     >       git clone https://github.com/nikolai-dimitrov/Shopping-Cart-Demo.git
 
-2.  **Run server** ✅ 
+2.  **Run server** ✅
 
 -   Open new terminal ❗
 -   Navigate to project folder 📂
@@ -72,7 +72,7 @@ A main reason about doing this project is trying some libraries responsible for 
 
     >       node server.js ⬅️
 
-3. **Run React App in production** ✅ 
+3. **Run React App in production** ✅
 
 -   Open new terminal ❗
 -   Navigate to project folder 📂
@@ -83,4 +83,5 @@ A main reason about doing this project is trying some libraries responsible for 
     >       npm run build ⬅️
     >       npm run preview ⬅️
 
--   App will be accessible via this url: localhost:4173
+4. **Access app via following URL** ✅
+    >       localhost:4173 ⬅️
