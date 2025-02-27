@@ -2,7 +2,7 @@
     <img src="https://res.cloudinary.com/dltjy2gzz/image/upload/v1724929925/E-Store%20Screenshots/E-Store_p7eom9.png">
 </p>
 
-# Simple Shopping Cart
+# Shopping Cart
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
