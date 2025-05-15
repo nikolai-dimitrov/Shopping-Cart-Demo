@@ -70,9 +70,9 @@ A main reason about doing this project is trying some libraries responsible for 
 -   Navigate to the folder called server 📂
 -   Type the following command ⤵️
 
-    >       node server.js ⬅️
+    >       npm start ⬅️
 
-3. **Run React App in production** ✅
+3. **Run React App locally** ✅
 
 -   Open new terminal ❗
 -   Navigate to project folder 📂
@@ -80,8 +80,7 @@ A main reason about doing this project is trying some libraries responsible for 
 -   Type the following commands ⤵️
 
     >       npm install ⬅️
-    >       npm run build ⬅️
-    >       npm run preview ⬅️
+    >       npm run dev ⬅️
 
 4. **Access app via following URL** ✅
-    >       localhost:4173 ⬅️
+    >       localhost:5173 ⬅️
