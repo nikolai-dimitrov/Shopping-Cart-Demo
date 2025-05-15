@@ -11,6 +11,9 @@
 ![Ant-Design](https://img.shields.io/badge/-AntDesign-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
+# **[Live Demo](https://shopping-cart-bec7b.web.app/)**
+❗ **In Live Demo sometimes may be a delay with the data which is coming from the server, because the server is deployed in Render using a free plan.**
+
 **This project is simple website with only 3 pages.**
 
 -   **There is product page where user can choose products check product specifications and add it into a cart.**
