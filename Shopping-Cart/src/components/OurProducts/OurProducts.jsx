@@ -18,7 +18,7 @@ export const OurProducts = () => {
 
 
 	useEffect(() => {
-		fetch('http://localhost:3030/jsonstore/electronics')
+		fetch(`${import.meta.env.VITE_API_URL}/jsonstore/electronics`)
 			.then(response => response.json())
 			.then(data => {
 				// Create matrix with arrays with max 9 elements for every page.
