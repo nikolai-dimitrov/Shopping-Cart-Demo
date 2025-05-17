@@ -3,6 +3,8 @@ import { Reveal } from './Reveal/Reveal';
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
 
+import { FaGithub } from "react-icons/fa";
+
 import codingImg from '../../assets/coding-reactjs-image.png';
 import shoppingImg from '../../assets/shoping-card-img.webp';
 import styles from './home.module.css';
@@ -18,7 +20,10 @@ export const Home = () => {
                 }}
                     initial='hidden'
                     animate='visible'
-                    transition={{ duration: 0.5, delay: 0.1 }} className={styles.heading}><span className={styles.first}>Welcome</span> <span className={styles.second}>to</span> <span className={styles.third}>the</span> <span className={styles.fourth}>E-Store</span></motion.h1>
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className={styles.heading}>
+                    <span>Welcome to the E-Store</span>
+                </motion.h1>
                 {/* Reveal information  */}
                 <div className={styles.informationContainer}>
                     <div className={styles.informationHeadingContainer}>
@@ -28,23 +33,40 @@ export const Home = () => {
                         }}
                             initial='hidden'
                             animate='visible'
-                            transition={{ duration: 0.5, delay: 0.2 }}>Hey, I am
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <span>Project</span>
+
                         </motion.h1>
-                        <ReactTyped strings={["Nikolay Dimitrov"]} typeSpeed={15} loop={false} showCursor={false} startDelay={600} >
+                        <ReactTyped strings={["Summary"]} typeSpeed={15} loop={false} showCursor={false} startDelay={600} >
                             <h1>
                             </h1>
                         </ReactTyped>
                     </div>
                     <Reveal>
-                        <h2>Full Stack Web Developer</h2>
+                        <h2>Sometimes there is a delay of up to 50 seconds in receiving data from the server, because project uses slow free instance.</h2>
                     </Reveal>
                     <div className={styles.descriptionContainer}>
                         <Reveal>
-                            <h3>Project Description</h3>
+                            <h3>Built With</h3>
                         </Reveal>
-                        <Reveal>
-                            <p className={styles.description}>This is my Shopping Cart Demo Project.The main reason about doing the project is to practice AntDesign and some libraries responsibe for better UI that i have never used.The main logic is very simple because it isn't the focus of the project. </p>
-                        </Reveal>
+                        <ul className={styles.features}>
+                            <Reveal>
+                                <li>- Ant Design</li>
+                            </Reveal>
+                            <Reveal>
+                                <li>- Framer Motion</li>
+                            </Reveal>
+                            <Reveal>
+                                <li>- React Loading Skeleton</li>
+                            </Reveal>
+                            <Reveal>
+                                <li>- React Router</li>
+                            </Reveal>
+                            <Reveal>
+                                <li>- Context API</li>
+                            </Reveal>
+                        </ul>
                     </div>
                     <Reveal>
                         <h3>Project Features</h3>
@@ -64,8 +86,7 @@ export const Home = () => {
                     </ul>
 
                     <Reveal>
-                        <p>By clicking the button below you are going to visit my GitHub.</p>
-                        <a href="https://github.com/nikolai-dimitrov">GitHub</a>
+                        <a className={styles.githubLink} href="https://github.com/nikolai-dimitrov"><span>GitHub</span> <FaGithub /></a>
                     </Reveal>
                 </div>
                 {/* Framer motion images */}

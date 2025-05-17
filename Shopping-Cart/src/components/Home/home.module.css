@@ -33,10 +33,12 @@ h1 {
 }
 
 h2 {
-	font-size: 23px;
+	font-size: 17px;
 	margin-bottom: 20px;
-	color: #53ffae;
+	/* color: #53ffae; */
+	max-width: 340px;
 }
+
 h3 {
 	font-size: 20px;
 	color: #53ffae;
@@ -55,6 +57,13 @@ h3 {
 .features li {
 	margin-left: 10px;
 }
+
+.githubLink {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+}
+
 .framerMotionContainer {
 	overflow: hidden;
 	margin-bottom: 71px;
@@ -76,18 +85,7 @@ h3 {
 .home span {
 	color: #53ffae;
 }
-.home .heading .first {
-	color: #69009f;
-}
-.home .heading .second {
-	color: #53ffae;
-}
-.home .heading .third {
-	color: #ff9900;
-}
-.home .heading .fourth {
-	color: #d11394;
-}
+
 
 /* 1600x900 */
 @media (max-width: 1600px) and (max-height: 900px) {
