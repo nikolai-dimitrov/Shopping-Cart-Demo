@@ -84,9 +84,17 @@
 	top: -5px;
 	left: -5px;
 }
+
 .showCounter {
 	visibility: visible !important;
+	top: -5px;
+	left: -5px;
 }
+
+.reCenterCounter span {
+	left: -8px !important;
+}
+
 @media (max-width: 950px) {
 	.nav {
 		width: 0%;

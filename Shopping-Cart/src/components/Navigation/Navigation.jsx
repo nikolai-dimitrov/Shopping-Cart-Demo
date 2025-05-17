@@ -33,6 +33,19 @@ export const Navigation = () => {
         setNavOpen(!navOpen);
     }
 
+    const getClassNameByProductsCount = () => {
+        let classNameString = ''
+        if (cartProducts.length < 1) {
+            classNameString = `${styles.hideCounter}`
+        } else {
+            classNameString = `${styles.showCounter}`
+            if (cartProducts.length > 9)
+                classNameString += ` ${styles.reCenterCounter}`
+        }
+
+        return classNameString
+    }
+
     const items = [
         {
             key: '1',
@@ -65,7 +78,7 @@ export const Navigation = () => {
             label: (
                 `${cartProducts.length}`
             ),
-            className: cartProducts.length >= 1 ? `${styles.showCounter}` : `${styles.hideCounter}`,
+            className: getClassNameByProductsCount(),
         },
 
 
