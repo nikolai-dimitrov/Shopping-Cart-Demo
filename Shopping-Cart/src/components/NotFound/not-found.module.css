@@ -23,3 +23,18 @@
     padding: 6px 30px;
     border-color: unset;
 }
+
+@media screen and (max-width: 950px) {
+    .contentContainer {
+        transform: translate(-50%, -50%);
+    }
+
+}
+
+@media screen and (max-width: 280px){
+    .heading {
+        font-size: 140px;
+        color: gray;
+    }
+
+}
