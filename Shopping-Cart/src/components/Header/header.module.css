@@ -1,19 +1,21 @@
 header {
-    background: linear-gradient(
-        90deg,
-        rgba(2, 0, 36, 1) 0%,
-        rgba(9, 52, 121, 1) 0%,
-        rgba(0, 230, 255, 1) 94%
-    );
+	background: linear-gradient(
+		90deg,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(9, 52, 121, 1) 0%,
+		rgba(0, 230, 255, 1) 94%
+	);
 }
+
 .headingWrapper {
-    max-width: 1600px;
-    margin: 0 auto;
+	max-width: 1600px;
+	margin: 0 auto;
 }
+
 .heading {
-    font-size: 30px;
-    padding: 14px;
-    font-family: fantasy;
-    line-height: 1;
-    color: white;
+	font-size: 30px;
+	padding: 14px;
+	line-height: 1.5;
+	color: white;
 }
+
