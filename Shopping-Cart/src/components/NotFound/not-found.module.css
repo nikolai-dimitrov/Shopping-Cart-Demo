@@ -1,0 +1,25 @@
+.contentContainer {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateY( -50%);
+    text-align: center;
+}
+
+.heading {
+	font-size: 160px;
+    color: gray;
+}
+
+.subHeading {
+    font-size: 24px;
+    color: gray;
+    margin-bottom: 40px;
+}
+
+.btn {
+    background-color: black;
+    color: #fff;
+    padding: 6px 30px;
+    border-color: unset;
+}
