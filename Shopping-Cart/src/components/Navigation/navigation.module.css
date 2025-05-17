@@ -129,11 +129,29 @@
 	}
 }
 
+@media (max-width: 500px) {
+	.navMenuWrapper {
+		width: 45%;
+	}
+}
+
 @media (max-width: 450px) {
 	.navMenuWrapper {
 		width: 100%;
 	}
 	:global(.ant-menu-item):last-child {
 		left: 45%;
+	}
+}
+
+@media (max-width: 310px) {
+	:global(.ant-menu-item):last-child {
+		left: 50%;
+	}
+}
+
+@media (max-width: 270px) {
+	:global(.ant-menu-item):last-child {
+		left: 58%;
 	}
 }
