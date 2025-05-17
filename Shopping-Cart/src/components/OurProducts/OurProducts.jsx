@@ -18,6 +18,7 @@ export const OurProducts = () => {
 
 
 	useEffect(() => {
+		// TODO: Too much unnecessary fetches. Fetch products only on initial app load, because products are hardcoded data and it won't change and also it will be always fresh.
 		fetch(`${import.meta.env.VITE_API_URL}/jsonstore/electronics`)
 			.then(response => response.json())
 			.then(data => {
