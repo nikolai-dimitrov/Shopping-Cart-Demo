@@ -48,7 +48,10 @@
 }
 .iconContainer {
 	border-radius: 100%;
-	width: 30%;
+	clip-path: circle(50% at 50% 50%);
+	/* width: 30%; */
+	width: 348px;
+	height: 348px;
 	border: 1px solid white;
 	text-align: center;
 	padding: 15px;
@@ -57,7 +60,7 @@
 	animation-duration: 1s;
 }
 .innerIconContainer {
-	padding: 80px 0 80px 0;
+	padding: 78px 0 80px 0;
 	border-radius: 100%;
 	border: 3px solid white;
 }
@@ -157,15 +160,19 @@
 	display: flex;
 	align-items: flex-start;
 }
+
 .message span {
 	font-weight: 600;
 }
+
 .carIcon {
 	font-size: 24px;
 }
+
 .progressContainer {
 	width: 23%;
 }
+
 .checkOutBtn {
 	width: 23%;
 	text-align: center;
@@ -174,37 +181,8 @@
 	padding: 10px 17px 10px 20px;
 	cursor: pointer;
 }
-@media (max-width: 1366px) {
-	.innerIconContainer {
-		padding: 57px 20px 57px 20px;
-	}
-}
-
-@media (max-width: 1280px) {
-	.iconContainer {
-		width: 35%;
-	}
-	.innerIconContainer {
-		padding: 72px 20px 65px 20px;
-	}
-}
-
-@media (max-width: 1024px) {
-	.iconContainer {
-		width: 44%;
-	}
-}
-@media (max-width: 950px) {
-	.iconContainer {
-		width: 39%;
-	}
-}
 
 @media (max-width: 768px) {
-	.iconContainer {
-		width: 52%;
-	}
-
 	.checkOutContainer .description {
 		width: 46%;
 	}
@@ -216,15 +194,10 @@
 	}
 }
 @media (max-width: 576px) {
-	.iconContainer {
-		width: 70%;
-	}
-	.innerIconContainer {
-		padding: 80px 26px 80px 20px;
-	}
 	.checkOutContainer .description {
 		width: 56%;
 	}
+
 	.message,
 	.progressContainer,
 	.checkOutBtn {
@@ -238,20 +211,59 @@
 	.checkOutContainer .description {
 		width: 100%;
 	}
-	.iconContainer {
-		width: 92%;
-	}
+
 	.message,
 	.progressContainer,
 	.checkOutBtn {
 		width: 100%;
 	}
 }
+
 @media (max-width: 425px) {
 	.productCards {
 		padding: 0 10px 0 10px;
 	}
 	.checkOutContainer {
 		padding: 0 10px 0 10px;
+	}
+}
+
+
+@media (max-width: 385px) {
+	.iconContainer {
+		width: 270px;
+		height: 270px;
+	}
+
+	.innerIconContainer {
+		padding: 65px 0 40px 0;
+	}
+	
+	.heading {
+		font-size: 18px;
+	}
+
+	.icon {
+		font-size: 80px;
+	}
+}
+
+@media (max-width: 275px) {
+	.iconContainer {
+		width: 235px;
+		height: 235px;
+	}
+
+	.innerIconContainer {
+		padding: 46px 0 40px 0;
+	}
+	
+	.heading {
+		font-size: 16px;
+		margin-bottom: 12px;
+	}
+
+	.icon {
+		font-size: 80px;
 	}
 }
