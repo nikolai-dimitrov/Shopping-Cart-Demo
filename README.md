@@ -36,7 +36,7 @@ A main reason about doing this project is trying some libraries responsible for 
 
 1. Home Page
 
-![Alt text](https://res.cloudinary.com/dltjy2gzz/image/upload/v1724930043/E-Store%20Screenshots/Screenshot_2024-08-27_at_15.29.41_3_ilazsh.png)
+![Alt text](https://res.cloudinary.com/dltjy2gzz/image/upload/v1747566747/E-Store%20Screenshots/Screenshot_2025-05-18_at_14.07.42_mc3dhi.png)
 
 ---
 
