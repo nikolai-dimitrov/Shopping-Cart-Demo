@@ -7,20 +7,20 @@ export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [cartProducts, setCartProducts] = useLocalStorage('cartProducts', []);
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/jsonstore/electronics`)
-        .then(response => response.json())
-        .then(data => {
-            // Create matrix with arrays with max 9 elements for every page.
-            // Products for every page is sub array.
-            const nestedArrays = splitArrayToSubArrays(Object.values(data));
-            setProducts(nestedArrays);
-            setIsLoading(false);
-
-        })
-        .catch(error => console.log(error.message));
+            .then(response => response.json())
+            .then(data => {
+                // Create matrix with arrays with max 9 elements for every page.
+                // Products for every page is sub array.
+                const nestedArrays = splitArrayToSubArrays(Object.values(data));
+                setProducts(nestedArrays);
+                setIsLoading(false);
+            })
+            .catch(error => console.log(error.message));
     }, [])
 
     const addToCartHandler = (currentProduct) => {
@@ -49,6 +49,7 @@ export const ProductProvider = ({ children }) => {
         successOrderHandler,
         cartProducts,
         products,
+        isLoading,
     }
 
     return (

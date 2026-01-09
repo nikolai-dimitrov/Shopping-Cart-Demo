@@ -9,15 +9,13 @@ import { CardSkeleton } from './CardSkeleton/CardSkeleton';
 
 import { Pagination } from 'antd';
 
-import { splitArrayToSubArrays } from "../../utils/splitArrayToSubArrays";
 import styles from "./our-products.module.css"
 
 export const OurProducts = () => {
-	const {products} = useContext(ProductContext)
+	const { products, isLoading } = useContext(ProductContext)
 	const [page, setPage] = useState(1);
-	// const [isLoading, setIsLoading] = useState(true);
+
 	const [popupState, showPopupHandler] = usePopup();
-	const isLoading = false
 
 	let totalProductsCount = products.reduce(
 		(count, currentArr) => count + currentArr.length,
