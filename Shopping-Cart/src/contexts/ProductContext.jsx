@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-import { splitArrayToSubArrays } from '../utils/splitArrayToSubArrays';
+import { createMatrix } from '../utils/createMatrix';
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
@@ -14,10 +14,9 @@ export const ProductProvider = ({ children }) => {
         fetch(`${import.meta.env.VITE_API_URL}/jsonstore/electronics`)
             .then(response => response.json())
             .then(data => {
-                // Create matrix with arrays with max 9 elements for every page.
-                // Products for every page is sub array.
-                const nestedArrays = splitArrayToSubArrays(Object.values(data));
-                setProducts(nestedArrays);
+                // Create matrix which contains sub array for every page with maximum 9 elements.
+                const productsMatrix = createMatrix(Object.values(data));
+                setProducts(productsMatrix);
                 setIsLoading(false);
             })
             .catch(error => console.log(error.message));

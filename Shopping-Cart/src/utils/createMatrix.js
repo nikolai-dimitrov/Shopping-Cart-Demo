@@ -1,4 +1,4 @@
-export const splitArrayToSubArrays = (electronicsArray) => {
+export const createMatrix = (electronicsArray) => {
     let matrix = [];
     while (electronicsArray.length) {
         matrix.push(electronicsArray.splice(0, 9));
