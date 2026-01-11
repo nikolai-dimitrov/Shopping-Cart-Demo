@@ -147,7 +147,7 @@ export const DeliveryForm = ({
                         required: 'true',
                     },
                     {
-                        validator: validators.minLenValidator('Zip Code should be at least 2 characters long.')
+                        validator: validators.minLenValidator('Zip Code should be at least 2 characters long.'),
 
                     },
                     {

@@ -1,5 +1,4 @@
-import { useState, useContext } from 'react';
-import { ProductContext } from '../../contexts/ProductContext'
+import { useState, useEffect } from 'react';
 
 import { usePopup } from '../../hooks/usePopup';
 
@@ -9,13 +8,31 @@ import { CardSkeleton } from './CardSkeleton/CardSkeleton';
 
 import { Pagination } from 'antd';
 
+import { createMatrix } from '../../utils/createMatrix';
+
 import styles from "./our-products.module.css"
 
 export const OurProducts = () => {
-	const { products, isLoading } = useContext(ProductContext)
+	const [products, setProducts] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState(null)
 	const [page, setPage] = useState(1);
 
 	const [popupState, showPopupHandler] = usePopup();
+
+	useEffect(() => {
+		// setIsLoading(true)
+		fetch(`${import.meta.env.VITE_API_URL}/jsonstore/electronics`)
+			.then(response => response.json())
+			.then(data => {
+				// Create matrix which contains sub array for every page with maximum 9 elements.
+				const productsMatrix = createMatrix(Object.values(data));
+				setProducts(productsMatrix);
+				setIsLoading(false);
+			})
+			.catch(error => console.log(error))
+			// .finally(() => setIsLoading(false));
+	}, [])
 
 	let totalProductsCount = products.reduce(
 		(count, currentArr) => count + currentArr.length,
