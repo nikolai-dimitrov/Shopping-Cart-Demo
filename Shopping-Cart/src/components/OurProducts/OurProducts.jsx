@@ -6,7 +6,7 @@ import { Popup } from '../Popup/Popup';
 import { Product } from './Product/Product';
 import { CardSkeleton } from './CardSkeleton/CardSkeleton';
 
-import { Pagination } from 'antd';
+import { Pagination, Button, Result } from 'antd';
 
 import { createMatrix } from '../../utils/createMatrix';
 
@@ -51,8 +51,12 @@ export const OurProducts = () => {
 			<div className={styles.ourProducts}>
 				{error ?
 					<div>
-						<p>{error.message}</p>
-						<button onClick={retryButtonHandler}>Retry</button>
+						<Result
+							status="500"
+							title="500"
+							subTitle={error.message}
+							extra={<Button type="primary" onClick={retryButtonHandler}>Retry</Button>}
+						/>
 					</div>
 					:
 					<>

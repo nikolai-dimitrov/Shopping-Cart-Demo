@@ -3,6 +3,8 @@
     flex-wrap: wrap;
     column-gap: 20px;
     row-gap: 31px;
+        justify-content: center;
+
 }
 
 :global(.ant-carousel) {
@@ -12,7 +14,6 @@
 @media (max-width: 1600px) {
     .ourProducts {
         gap: 10px;
-        justify-content: center;
     }
 }
 
