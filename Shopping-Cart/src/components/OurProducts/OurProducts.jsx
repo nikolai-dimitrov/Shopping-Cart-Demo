@@ -14,16 +14,20 @@ import styles from "./our-products.module.css"
 
 export const OurProducts = () => {
 	const [products, setProducts] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState(null)
-	const [page, setPage] = useState(1);
-	const [retry, setRetry] = useState(0)
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(null);
+	const [retry, setRetry] = useState(0);
+	const [isRetrying, setIsRetrying] = useState(false);
 
+	const [page, setPage] = useState(1);
 	const [popupState, showPopupHandler] = usePopup();
 
 	useEffect(() => {
-		setIsLoading(true);
-		setError(null)
+		if (!isRetrying) {
+			setIsLoading(true);
+		}
+
+		setError(null);
 
 		fetch(`${import.meta.env.VITE_API_URL}/jsonstore/electronics`)
 			.then(response => response.json())
@@ -34,6 +38,7 @@ export const OurProducts = () => {
 				setIsLoading(false);
 			})
 			.catch(error => setError(error))
+			.finally(setIsRetrying(false))
 	}, [retry])
 
 	let totalProductsCount = products.reduce(
@@ -42,8 +47,9 @@ export const OurProducts = () => {
 	);
 
 	const retryButtonHandler = () => {
-		setRetry((prev) => prev + 1)
-		setError(null)
+		setIsRetrying(true);
+		setRetry((prev) => prev + 1);
+		setError(null);
 	}
 
 	return (
@@ -62,7 +68,7 @@ export const OurProducts = () => {
 					<>
 						<Popup {...popupState} />
 
-						{isLoading ? <CardSkeleton cards={9} /> : products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
+						{(isLoading && !isRetrying) ? <CardSkeleton cards={9} /> : products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
 						<Pagination
 							simple={{
 								readOnly: true,
