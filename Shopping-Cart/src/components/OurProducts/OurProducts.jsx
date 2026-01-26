@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { fetchProducts } from '../../services/productService';
 import { usePopup } from '../../hooks/usePopup';
 
 import { Popup } from '../Popup/Popup';
@@ -16,30 +16,45 @@ export const OurProducts = () => {
 	const [products, setProducts] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
-	const [retry, setRetry] = useState(0);
-	const [isRetrying, setIsRetrying] = useState(false);
+	// const [retry, setRetry] = useState(0);
+	// const [isRetrying, setIsRetrying] = useState(false);
+	const [retry, setRetry] = useState({
+		retriesCount: 0,
+		isRetrying: false
+	})
 
 	const [page, setPage] = useState(1);
 	const [popupState, showPopupHandler] = usePopup();
 
 	useEffect(() => {
-		if (!isRetrying) {
-			setIsLoading(true);
-		}
+		const loadProducts = async () => {
+			console.log(retry.isRetrying, 'is retrying ')
+			console.log(isLoading, 'is loading')
 
-		setError(null);
+			if (!retry.isRetrying) {
+				setIsLoading(true);
+			}
 
-		fetch(`${import.meta.env.VITE_API_URL}/jsonstore/electronics`)
-			.then(response => response.json())
-			.then(data => {
+			setError(null);
+
+			try {
+				const data = await fetchProducts();
 				// Create matrix which contains sub array for every page with maximum 9 elements.
 				const productsMatrix = createMatrix(Object.values(data));
 				setProducts(productsMatrix);
-				setIsLoading(false);
-			})
-			.catch(error => setError(error))
-			.finally(setIsRetrying(false))
-	}, [retry])
+			} catch (error) {
+				setError(error)
+			} finally {
+				setRetry(prevState => ({ ...prevState, isRetrying: false }))
+				setIsLoading(false)
+
+			}
+		}
+
+		loadProducts();
+
+
+	}, [retry.retriesCount])
 
 	let totalProductsCount = products.reduce(
 		(count, currentArr) => count + currentArr.length,
@@ -47,8 +62,12 @@ export const OurProducts = () => {
 	);
 
 	const retryButtonHandler = () => {
-		setIsRetrying(true);
-		setRetry((prev) => prev + 1);
+		setRetry(prevState => ({
+			...prevState,
+			isRetrying: true,
+			retriesCount: prevState.retriesCount + 1
+		}))
+		// Create and invoke separate function clearError
 		setError(null);
 	}
 
@@ -68,7 +87,7 @@ export const OurProducts = () => {
 					<>
 						<Popup {...popupState} />
 
-						{(isLoading && !isRetrying) ? <CardSkeleton cards={9} /> : products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
+						{(isLoading && !retry.isRetrying) ? <CardSkeleton cards={9} /> : products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
 						<Pagination
 							simple={{
 								readOnly: true,
