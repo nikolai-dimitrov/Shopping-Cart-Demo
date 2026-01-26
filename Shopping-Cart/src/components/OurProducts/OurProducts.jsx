@@ -8,53 +8,45 @@ import { CardSkeleton } from './CardSkeleton/CardSkeleton';
 
 import { Pagination, Button, Result } from 'antd';
 
-import { createMatrix } from '../../utils/createMatrix';
-
+import { createMatrix, ensureMinSkeletonDelay } from '../../utils/utils';
 import styles from "./our-products.module.css"
 
 export const OurProducts = () => {
 	const [products, setProducts] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
-	// const [retry, setRetry] = useState(0);
-	// const [isRetrying, setIsRetrying] = useState(false);
-	const [retry, setRetry] = useState({
-		retriesCount: 0,
-		isRetrying: false
-	})
+	const [retryCount, setRetryCount] = useState(0);
 
 	const [page, setPage] = useState(1);
 	const [popupState, showPopupHandler] = usePopup();
 
 	useEffect(() => {
-		const loadProducts = async () => {
-			console.log(retry.isRetrying, 'is retrying ')
-			console.log(isLoading, 'is loading')
-
-			if (!retry.isRetrying) {
-				setIsLoading(true);
-			}
-
-			setError(null);
-
-			try {
-				const data = await fetchProducts();
-				// Create matrix which contains sub array for every page with maximum 9 elements.
-				const productsMatrix = createMatrix(Object.values(data));
-				setProducts(productsMatrix);
-			} catch (error) {
-				setError(error)
-			} finally {
-				setRetry(prevState => ({ ...prevState, isRetrying: false }))
-				setIsLoading(false)
-
-			}
-		}
-
 		loadProducts();
+	}, [retryCount])
 
+	const loadProducts = async () => {
+		showLoadingSkeleton();
+		clearError();
+		const startTime = Date.now();
 
-	}, [retry.retriesCount])
+		try {
+			const data = await fetchProducts();
+
+			// Create matrix which contains sub array for every page with maximum 9 elements.
+			const productsMatrix = createMatrix(Object.values(data));
+			setProducts(productsMatrix);
+		} catch (error) {
+			setError(error)
+		} finally {
+			await ensureMinSkeletonDelay(startTime, 1000);
+			hideLoadingSkeleton();
+		}
+	};
+
+	const clearError = () => setError(null);
+	const showLoadingSkeleton = () => setIsLoading(true);
+	const hideLoadingSkeleton = () => setIsLoading(false);
+	const triggerRetry = () => setRetryCount(prevState => prevState + 1);
 
 	let totalProductsCount = products.reduce(
 		(count, currentArr) => count + currentArr.length,
@@ -62,19 +54,15 @@ export const OurProducts = () => {
 	);
 
 	const retryButtonHandler = () => {
-		setRetry(prevState => ({
-			...prevState,
-			isRetrying: true,
-			retriesCount: prevState.retriesCount + 1
-		}))
-		// Create and invoke separate function clearError
-		setError(null);
+		triggerRetry();
+		showLoadingSkeleton();
 	}
+
 
 	return (
 		<>
 			<div className={styles.ourProducts}>
-				{error ?
+				{error && !isLoading ?
 					<div>
 						<Result
 							status="500"
@@ -87,7 +75,7 @@ export const OurProducts = () => {
 					<>
 						<Popup {...popupState} />
 
-						{(isLoading && !retry.isRetrying) ? <CardSkeleton cards={9} /> : products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
+						{(isLoading) ? <CardSkeleton cards={9} /> : products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
 						<Pagination
 							simple={{
 								readOnly: true,

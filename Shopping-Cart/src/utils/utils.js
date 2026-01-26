@@ -27,7 +27,7 @@ export const calculateOrderExpenses = (cartProducts, quantity) => {
 	};
 };
 
-export const ensureSkeletonDelay = async (startTime, minSkeletonDelay) => {
+export const ensureMinSkeletonDelay = async (startTime, minSkeletonDelay) => {
 	const passedTime = Date.now() - startTime;
 
 	if (passedTime < minSkeletonDelay) {
