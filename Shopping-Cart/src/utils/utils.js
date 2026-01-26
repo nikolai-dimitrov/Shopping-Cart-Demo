@@ -1,3 +1,11 @@
+export const createMatrix = (electronicsArray) => {
+	let matrix = [];
+	while (electronicsArray.length) {
+		matrix.push(electronicsArray.splice(0, 9));
+	}
+	return matrix;
+};
+
 export const calculateOrderExpenses = (cartProducts, quantity) => {
 	let subTotalPrice = 0;
 	cartProducts.forEach(
@@ -17,4 +25,14 @@ export const calculateOrderExpenses = (cartProducts, quantity) => {
 		grandTotalPrice,
 		freeShippingPercent,
 	};
+};
+
+export const ensureSkeletonDelay = async (startTime, minSkeletonDelay) => {
+	const passedTime = Date.now() - startTime;
+
+	if (passedTime < minSkeletonDelay) {
+		await new Promise((resolve, reject) => {
+			setTimeout(resolve, minSkeletonDelay - passedTime);
+		});
+	}
 };
