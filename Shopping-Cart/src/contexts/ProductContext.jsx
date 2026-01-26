@@ -1,11 +1,11 @@
-import { createContext} from 'react';
+import { createContext } from 'react';
 
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    const [cartProducts, setCartProducts] = useLocalStorage('cartProducts', []);
+    const [cartProducts, setCartProducts, clearCartProducts] = useLocalStorage('cartProducts', []);
 
     const addToCartHandler = (currentProduct) => {
         const existingProduct = cartProducts.filter(i => i._id == currentProduct._id);
@@ -23,8 +23,7 @@ export const ProductProvider = ({ children }) => {
     }
 
     const successOrderHandler = () => {
-        setCartProducts((cartProducts) => []);
-        localStorage.removeItem('cartProducts');
+        clearCartProducts('cartProducts')
     }
 
     const productContextValues = {
