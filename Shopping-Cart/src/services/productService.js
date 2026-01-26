@@ -1,7 +1,7 @@
 export const fetchProducts = async () => {
 	try {
 		const response = await fetch(
-			`${import.meta.env.VITE_API_URL}/jsonstor/electronics`
+			`${import.meta.env.VITE_API_URL}/jsonstore/electronics`
 		);
 
         if(!response.ok) {
