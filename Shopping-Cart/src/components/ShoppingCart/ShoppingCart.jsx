@@ -16,7 +16,7 @@ import {
 } from '@ant-design/icons';
 import { Flex, Progress, Button, Result } from 'antd';
 
-import { calculateOrderExpenses } from '../../utils/calculateOrderExpenses';
+import { calculateOrderExpenses } from '../../utils/utils';
 import styles from './shopping-cart.module.css';
 
 export const ShoppingCart = () => {
