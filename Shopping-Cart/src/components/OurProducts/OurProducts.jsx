@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { fetchProducts } from '../../services/productService';
+
+import { useProducts } from '../../hooks/useProducts';
 import { usePopup } from '../../hooks/usePopup';
 
 import { Popup } from '../Popup/Popup';
@@ -8,74 +9,61 @@ import { CardSkeleton } from './CardSkeleton/CardSkeleton';
 
 import { Pagination, Button, Result } from 'antd';
 
-import { createMatrix, ensureMinSkeletonDelay } from '../../utils/utils';
+import { ensureMinSkeletonDelay } from '../../utils/utils';
 import styles from "./our-products.module.css"
 
 export const OurProducts = () => {
-	const [products, setProducts] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(null);
-	const [retryCount, setRetryCount] = useState(0);
+	const { products, error, getProducts } = useProducts();
+	const [isSkeletonVisible, setIsSkeletonVisible] = useState(false);
 
 	const [page, setPage] = useState(1);
 	const [popupState, showPopupHandler] = usePopup();
 
+
 	useEffect(() => {
 		loadProducts();
-	}, [retryCount])
+	}, [])
 
 	const loadProducts = async () => {
 		showLoadingSkeleton();
-		clearError();
+
 		const startTime = Date.now();
+		// Fetch products and enforce min loading duration together to prevent skeleton flicker for fast network responses.
+		// For slow network response waiting fetching products than remove skeleton without additional skeleton delay.
+		await Promise.all([
+			getProducts(),
+			ensureMinSkeletonDelay(startTime, 1000)
 
-		try {
-			const data = await fetchProducts();
+		])
 
-			// Create matrix which contains sub array for every page with maximum 9 elements.
-			const productsMatrix = createMatrix(Object.values(data));
-			setProducts(productsMatrix);
-		} catch (error) {
-			setError(error)
-		} finally {
-			await ensureMinSkeletonDelay(startTime, 1000);
-			hideLoadingSkeleton();
-		}
-	};
+		hideLoadingSkeleton();
+	}
 
-	const clearError = () => setError(null);
-	const showLoadingSkeleton = () => setIsLoading(true);
-	const hideLoadingSkeleton = () => setIsLoading(false);
-	const triggerRetry = () => setRetryCount(prevState => prevState + 1);
+	const showLoadingSkeleton = () => setIsSkeletonVisible(true);
+	const hideLoadingSkeleton = () => setIsSkeletonVisible(false);
 
 	let totalProductsCount = products.reduce(
 		(count, currentArr) => count + currentArr.length,
 		0
 	);
 
-	const retryButtonHandler = () => {
-		triggerRetry();
-		showLoadingSkeleton();
-	}
-
-
 	return (
 		<>
 			<div className={styles.ourProducts}>
-				{error && !isLoading ?
+				{error && !isSkeletonVisible ?
 					<div>
 						<Result
 							status="500"
 							title="500"
 							subTitle={error.message}
-							extra={<Button type="primary" onClick={retryButtonHandler}>Retry</Button>}
+							extra={<Button type="primary" onClick={loadProducts}>Retry</Button>}
 						/>
 					</div>
 					:
 					<>
 						<Popup {...popupState} />
 
-						{(isLoading) ? <CardSkeleton cards={9} /> : products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
+						{(isSkeletonVisible) ? <CardSkeleton cards={9} /> : products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
 						<Pagination
 							simple={{
 								readOnly: true,

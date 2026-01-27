@@ -31,8 +31,13 @@ export const ensureMinSkeletonDelay = async (startTime, minSkeletonDelay) => {
 	const passedTime = Date.now() - startTime;
 
 	if (passedTime < minSkeletonDelay) {
-		await new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			setTimeout(resolve, minSkeletonDelay - passedTime);
 		});
-	}
+	} 
+	
+	return new Promise((resolve, reject) => {
+		setTimeout(resolve, 0);
+	});
+
 };
