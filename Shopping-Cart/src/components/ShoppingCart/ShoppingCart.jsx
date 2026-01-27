@@ -112,13 +112,13 @@ export const ShoppingCart = () => {
                                 {/* Check out bottom section */}
                                 <div className={styles.checkOutContainer}>
                                     <div className={styles.description}>
-                                        <p>Subtotal: <span>${subTotalPrice}</span> </p>
+                                        <p>Price: <span>${subTotalPrice}</span> </p>
                                         <div className={styles.shippingTaxContainer}>
                                             <p className={styles.shippingTax}>Shipping Tax: <span>$50</span> </p>
                                             <div className={freeShippingPercent >= 100 ? `${styles.crossLine} ${styles.showLine}` : `${styles.crossLine}`}></div>
                                         </div>
                                         <p className={styles.salesTax}>Sales Tax: <span>${salesTax}</span> </p>
-                                        <p className={styles.grandTotalPrice}>Grand Total: <span>${grandTotalPrice}</span> </p>
+                                        <p className={styles.grandTotalPrice}>Total: <span>${grandTotalPrice}</span> </p>
                                     </div>
                                     <div className={styles.message}>
                                         {grandTotalPrice >= 5000 ? <p>Congrats, you are eligible for <span>Free Shipping</span></p> : <p>Sorry, you aren't eligible for <span>Free Shipping</span></p>}
