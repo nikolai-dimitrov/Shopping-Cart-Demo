@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLocation } from "react-router";
 import { Routes, Route, Navigate } from "react-router-dom";
 
@@ -15,20 +16,26 @@ import styles from "./app.module.css";
 const { Footer } = Layout
 
 function App() {
-	const location = useLocation();
-	const isNotFound = location.pathname == "/404";
+    const [areProductsAvailable, setAreProductsAvailable] = useState(true);
+
+    const location = useLocation();
+    const isNotFound = location.pathname == "/404";
+
+    const updateProductsAvailability = (isAvailable) => {
+        setAreProductsAvailable(isAvailable)
+    };
 
     return (
         <>
             <Header />
             <ProductProvider>
                 <div className={styles.layout}>
-                    { !isNotFound && <Navigation />}
+                    {!isNotFound && <Navigation />}
                     <main id="main">
                         <Routes>
                             <Route path="/" element={<Home />} />
-                            <Route path="/products" element={<OurProducts />} />
-                            <Route path="/shopping-cart" element={<ShoppingCart />} />
+                            <Route path="/products" element={<OurProducts updateProductsAvailability={updateProductsAvailability} />} />
+                            <Route path="/shopping-cart" element={<ShoppingCart areProductsAvailable={areProductsAvailable} />} />
                             <Route path="/404" element={<NotFound />} />
                             <Route path="*" element={<Navigate to="/404" />} />
                         </Routes>

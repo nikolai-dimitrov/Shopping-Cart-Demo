@@ -10,7 +10,6 @@ import { Popup } from '../Popup/Popup';
 
 
 import {
-
     ShoppingCartOutlined,
     CarOutlined
 } from '@ant-design/icons';
@@ -19,7 +18,7 @@ import { Flex, Progress, Button, Result } from 'antd';
 import { calculateOrderExpenses } from '../../utils/utils';
 import styles from './shopping-cart.module.css';
 
-export const ShoppingCart = () => {
+export const ShoppingCart = ({ areProductsAvailable }) => {
     const { cartProducts, removeFromCartHandler, successOrderHandler } = useContext(ProductContext);
     const navigate = useNavigate();
 
@@ -134,7 +133,7 @@ export const ShoppingCart = () => {
                                         <Progress percent={freeShippingPercent} size="active" showInfo={false} />
                                     </Flex>
 
-                                    <button className={styles.checkOutBtn} onClick={() => setShowDeliveryModal(showDeliveryModal => true)}>Check out</button>
+                                    <button className={styles.checkOutBtn} onClick={() => setShowDeliveryModal(true)} disabled={areProductsAvailable == false ? true : false}>Check out</button>
                                 </div>
                             </>
                         }

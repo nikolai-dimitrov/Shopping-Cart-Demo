@@ -12,7 +12,7 @@ import { Pagination, Button, Result } from 'antd';
 import { ensureMinSkeletonDelay } from '../../utils/utils';
 import styles from "./our-products.module.css"
 
-export const OurProducts = () => {
+export const OurProducts = ({ updateProductsAvailability }) => {
 	const { products, error, getProducts } = useProducts();
 	const [isSkeletonVisible, setIsSkeletonVisible] = useState(false);
 
@@ -24,9 +24,14 @@ export const OurProducts = () => {
 		loadProducts();
 	}, [])
 
+	useEffect(() => {
+		// Convert error to boolean
+		const isAvailable = !error;
+		updateProductsAvailability(isAvailable);
+	}, [error])
+
 	const loadProducts = async () => {
 		showLoadingSkeleton();
-
 		const startTime = Date.now();
 		// Fetch products and enforce min loading duration together to prevent skeleton flicker for fast network responses.
 		// For slow network response waiting fetching products than remove skeleton without additional skeleton delay.
@@ -34,7 +39,7 @@ export const OurProducts = () => {
 			getProducts(),
 			ensureMinSkeletonDelay(startTime, 1000)
 
-		])
+		]);
 
 		hideLoadingSkeleton();
 	}
