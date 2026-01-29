@@ -53,40 +53,52 @@ export const OurProducts = ({ updateProductsAvailability }) => {
 	);
 
 	return (
-		<>
-			<div className={styles.ourProducts}>
-				{error && !isSkeletonVisible ?
-					<div>
-						<Result
-							status="500"
-							title="500"
-							subTitle={error.message}
-							extra={<Button type="primary" onClick={loadProducts}>Retry</Button>}
-						/>
-					</div>
-					:
+		<div className={styles.ourProducts}>
+			{error && !isSkeletonVisible ?
+				<div>
+					<Result
+						status="500"
+						title="500"
+						subTitle={error.message}
+						extra={<Button type="primary" onClick={loadProducts}>Retry</Button>}
+					/>
+				</div>
+				:
+				<>
+					<Popup {...popupState} />
 					<>
-						<Popup {...popupState} />
-
-						{(isSkeletonVisible) ? <CardSkeleton cards={9} /> : products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
-						<Pagination
-							simple={{
-								readOnly: true,
-							}}
-							defaultCurrent={1}
-							total={totalProductsCount}
-							current={page}
-							pageSize={9}
-							onChange={(page) => setPage(page)}
-							style={{
-								width: '93%',
-								justifyContent: 'center'
-							}}
-						/>
+						{(isSkeletonVisible) ?
+							<CardSkeleton cards={9} />
+							:
+							<>
+								{(products.length > 0) ?
+									<>
+										{products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
+										<Pagination
+											simple={{
+												readOnly: true,
+											}}
+											defaultCurrent={1}
+											total={totalProductsCount}
+											current={page}
+											pageSize={9}
+											onChange={(page) => setPage(page)}
+											style={{
+												width: '93%',
+												justifyContent: 'center'
+											}}
+										/>
+									</>
+									:
+									<div>asd</div>
+								}
+							</>
+						}
 					</>
+				</>
+			}
 
-				}
-			</div>
-		</>
+		</div >
+
 	)
 }
