@@ -66,7 +66,7 @@ export const OurProducts = ({ updateProductsAvailability }) => {
 				:
 				<>
 					<Popup {...popupState} />
-					<>
+					<div className={styles.productsList}>
 						{(isSkeletonVisible) ?
 							<CardSkeleton cards={9} />
 							:
@@ -74,27 +74,26 @@ export const OurProducts = ({ updateProductsAvailability }) => {
 								{(products.length > 0) ?
 									<>
 										{products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
-										<Pagination
-											simple={{
-												readOnly: true,
-											}}
-											defaultCurrent={1}
-											total={totalProductsCount}
-											current={page}
-											pageSize={9}
-											onChange={(page) => setPage(page)}
-											style={{
-												width: '93%',
-												justifyContent: 'center'
-											}}
-										/>
 									</>
 									:
-									<div>asd</div>
+									// TODO: No items message
+									<div>No items</div>
 								}
 							</>
 						}
-					</>
+					</div>
+					{(products.length > 0 && !isSkeletonVisible) &&
+						<Pagination
+							simple={{
+								readOnly: true,
+							}}
+							defaultCurrent={1}
+							total={totalProductsCount}
+							current={page}
+							pageSize={9}
+							onChange={(page) => setPage(page)}
+							className={styles.pagination}
+						/>}
 				</>
 			}
 
