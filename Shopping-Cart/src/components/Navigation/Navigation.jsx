@@ -27,10 +27,10 @@ export const Navigation = () => {
     const { cartProducts } = useContext(ProductContext);
 
 
-    const [navOpen, setNavOpen] = useState(false);
+    const [isNavOpen, setIsNavOpen] = useState(false);
     const { pathname } = useLocation();
-    const changeNavStatus = () => {
-        setNavOpen(!navOpen);
+    const toggleNav = () => {
+        setIsNavOpen(!isNavOpen);
     }
 
     const getClassNameByProductsCount = () => {
@@ -86,14 +86,14 @@ export const Navigation = () => {
     return (
         <>
             <nav className={styles.nav}>
-                <div className={styles.menuToggle} onClick={() => changeNavStatus()}>
+                <div className={styles.menuToggle} onClick={() => toggleNav()}>
                     <div className={styles.container}>
-                        <span className={navOpen ? `${styles.lineTop} ${styles.spinTop}` : `${styles.lineTop}`}></span>
-                        <span className={navOpen ? `${styles.lineBottom} ${styles.spinBottom}` : `${styles.lineBottom}`}></span>
+                        <span className={isNavOpen ? `${styles.lineTop} ${styles.spinTop}` : `${styles.lineTop}`}></span>
+                        <span className={isNavOpen ? `${styles.lineBottom} ${styles.spinBottom}` : `${styles.lineBottom}`}></span>
                     </div>
                 </div>
 
-                <div className={navOpen ? `${styles.navMenuWrapper} ${styles.navToggle}` : `${styles.navMenuWrapper}`}>
+                <div className={isNavOpen ? `${styles.navMenuWrapper} ${styles.navToggle}` : `${styles.navMenuWrapper}`}>
                     <Menu
                         style={{
                             itemBg: "f0000000",
@@ -101,8 +101,8 @@ export const Navigation = () => {
                         selectedKeys={[`${pathMapper[pathname]}`]}
                         theme='light'
                         items={items}
-                        className={navOpen ? `${styles.nav} ${styles.navOpen}` : `${styles.nav}`}
-                        onClick={() => changeNavStatus()}
+                        className={isNavOpen ? `${styles.nav} ${styles.navOpen}` : `${styles.nav}`}
+                        onClick={() => toggleNav()}
                     />
                 </div>
             </nav>
