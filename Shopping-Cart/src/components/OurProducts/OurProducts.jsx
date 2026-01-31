@@ -10,6 +10,7 @@ import { CardSkeleton } from './CardSkeleton/CardSkeleton';
 import { Pagination, Button, Result } from 'antd';
 
 import { ensureMinSkeletonDelay } from '../../utils/utils';
+import noProductsImg from "../../assets/Empty-State-Illustrations_Light-Mode_No-Data.png"
 import styles from "./our-products.module.css"
 
 export const OurProducts = ({ updateProductsAvailability }) => {
@@ -71,17 +72,19 @@ export const OurProducts = ({ updateProductsAvailability }) => {
 							<CardSkeleton cards={9} />
 							:
 							<>
-								{(products.length > 0) ?
+								{(products.length > 0) &&
 									<>
 										{products[page - 1]?.map(item => (<Product key={item._id} {...item} showPopupHandler={showPopupHandler} />))}
 									</>
-									:
-									// TODO: No items message
-									<div>No items</div>
 								}
 							</>
 						}
 					</div>
+					{products.length == 0 &&
+						<div className={styles.noDataContainer}>
+							<img src={noProductsImg} alt="not-data-image" />
+						</div>
+					}
 					{(products.length > 0 && !isSkeletonVisible) &&
 						<Pagination
 							simple={{
