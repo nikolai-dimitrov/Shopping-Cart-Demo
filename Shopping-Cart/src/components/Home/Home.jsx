@@ -22,7 +22,7 @@ export const Home = () => {
                     animate='visible'
                     transition={{ duration: 0.5, delay: 0.1 }}
                     className={styles.heading}>
-                    <span>Welcome to the E-Store</span>
+                    <span>E-Store</span>
                 </motion.h1>
                 {/* Reveal information  */}
                 <div className={styles.informationContainer}>
@@ -44,7 +44,7 @@ export const Home = () => {
                         </ReactTyped>
                     </div>
                     <Reveal>
-                        <h2>Sometimes there is a delay of up to 50 seconds in receiving data from the server, because project uses slow free instance.</h2>
+                        <h2>Sometimes there is a delay of up to 50 seconds in receiving data from the server, because server is deployed on render.com</h2>
                     </Reveal>
                     <div className={styles.descriptionContainer}>
                         <Reveal>
